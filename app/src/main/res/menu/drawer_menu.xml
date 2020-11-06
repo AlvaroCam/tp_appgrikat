@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+
+<group android:checkableBehavior="single">
+
+    <item android:id="@+id/nav_lobby"
+        android:icon="@drawable/ic_lobby"
+        android:title="APPGRIKAT"/>
+
+    <item android:id="@+id/nav_iniciar_sesion"
+        android:icon="@drawable/ic_iniciar_sesion"
+        android:title="Iniciar Sesion"/>
+
+    <item android:id="@+id/nav_oferta"
+        android:icon="@drawable/ic_oferta"
+        android:title="Ofertas"/>
+
+    <item android:id="@+id/nav_sugerencias"
+        android:icon="@drawable/ic_sugerencias"
+        android:title="Sugerencias"/>
+
+    <item android:id="@+id/nav_locales"
+        android:icon="@drawable/ic_locales"
+        android:title="Nuestros Locales"/>
+
+    <item android:id="@+id/nav_categorias"
+        android:icon="@drawable/ic_categorias"
+        android:title="Categorias"/>
+
+    <item android:id="@+id/nav_calificar"
+        android:icon="@drawable/ic_calificar"
+        android:title="Calificanos"/>
+</group>
+</menu>

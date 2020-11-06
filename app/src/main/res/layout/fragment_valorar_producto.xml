@@ -1,0 +1,132 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.alvarocam.appla11.ValorarPlatoFragment">
+
+    <CheckBox
+        android:id="@+id/star1"
+        style="?android:attr/starStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/star2"
+        android:layout_toEndOf="@+id/star2"
+        android:tag="1" />
+
+    <CheckBox
+        android:id="@+id/star2"
+        style="?android:attr/starStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/star3"
+        android:layout_alignBottom="@+id/star3"
+        android:layout_toEndOf="@+id/star3"
+        android:tag="2" />
+
+    <CheckBox
+        android:id="@+id/star3"
+        style="?android:attr/starStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/star4"
+        android:layout_alignBottom="@+id/star4"
+        android:layout_toEndOf="@+id/star4"
+        android:tag="3" />
+
+    <CheckBox
+        android:id="@+id/star4"
+        style="?android:attr/starStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/star5"
+        android:layout_alignBottom="@+id/star5"
+        android:layout_toEndOf="@+id/star5"
+        android:tag="4" />
+
+    <CheckBox
+        android:id="@+id/star5"
+        style="?android:attr/starStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/imageView"
+        android:layout_marginTop="16dp"
+        android:tag="5" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="11dp"
+        android:layout_marginTop="47dp"
+        android:layout_toStartOf="@+id/star1"
+        android:contentDescription="imagen"
+        android:src="@mipmap/ic_launcher" />
+
+
+    <TextView
+        android:id="@+id/lblPlato"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="25dp"
+        android:layout_toEndOf="@+id/star4"
+        android:text="Plato" />
+
+
+    <EditText
+        android:id="@+id/txtComentar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/star1"
+        android:layout_marginTop="36dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:labelFor="@+id/txtComentar" />
+
+
+    <Button
+        android:id="@+id/btnComentar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/lblUsuarios"
+        android:layout_alignStart="@+id/imageView"
+        android:layout_marginBottom="45dp"
+        android:text="Comentar" />
+
+    <EditText
+        android:id="@+id/editText4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/imageView"
+        android:layout_alignParentEnd="true"
+        android:ems="10"
+        android:inputType="textMultiLine"
+        android:labelFor="@+id/editText4" />
+
+    <TextView
+        android:id="@+id/lblUsuarios"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtComentar"
+        android:layout_marginTop="127dp"
+        android:layout_toStartOf="@+id/star3"
+        android:text="Usuarios" />
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/lblUsuarios"
+        android:layout_alignBottom="@+id/lblUsuarios"
+        android:layout_toEndOf="@+id/star2"
+        android:ems="10"
+        android:inputType="textMultiLine"
+        android:labelFor="@+id/editText" />
+
+
+
+</RelativeLayout>
