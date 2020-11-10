@@ -32,14 +32,15 @@ public class OfertaFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_oferta,container,false);
 
         recyclerOfertas = view.findViewById(R.id.idreciclador_ofertas);
-        layoutManager = new GridLayoutManager(getActivity(),3);
+        layoutManager = new GridLayoutManager(getActivity(),2);
         recyclerOfertas.setLayoutManager(layoutManager);
 
         adaptador = new AdaptadorOfertas();
-       // adaptador.llenarOfertas(getContext());
+       /* adaptador.llenarOfertas(getContext()); */
         recyclerOfertas.setAdapter(adaptador);
         return view;
 
     }
+
 
 }

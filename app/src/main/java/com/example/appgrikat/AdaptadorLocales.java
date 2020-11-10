@@ -26,10 +26,10 @@ public class AdaptadorLocales  extends RecyclerView.Adapter<AdaptadorLocales.Vie
 
         public ViewHolder(View view) {
             super(view);
-            nombre = view.findViewById(R.id.restaurante_title_id);
-            descrip = view.findViewById(R.id.descripcion_restaurante_id);
-            imagen = view.findViewById(R.id.restaurante_img_view);
-            cardView = view.findViewById(R.id.cardview_restaurante_id);
+            nombre = view.findViewById(R.id.Local_title_id);
+            descrip = view.findViewById(R.id.descripcion_local_id);
+            imagen = view.findViewById(R.id.local_img_view);
+            cardView = view.findViewById(R.id.cardview_locales_id);
         }
     }
 
@@ -48,6 +48,7 @@ public class AdaptadorLocales  extends RecyclerView.Adapter<AdaptadorLocales.Vie
 
             }
         });
+        //ewer
     }
 
     @Override

@@ -21,11 +21,12 @@ public class Categoria {
 
 
     static {
-        listaCategoria.add(new Categoria("Criollo", R.drawable.imagencategoria1));
-        listaCategoria.add(new Categoria("Marino", R.drawable.imagencategoria2));
-        listaCategoria.add(new Categoria("Oriental", R.drawable.imagencategoria3));
-        listaCategoria.add(new Categoria("Francesa", R.drawable.imagencategoria4));
-        listaCategoria.add(new Categoria("Pasta", R.drawable.imagencategoria5));
+        listaCategoria.add(new Categoria("Fermentadas", R.drawable.fermentadosimg));
+        listaCategoria.add(new Categoria("Destilados", R.drawable.destiladosimg));
+        listaCategoria.add(new Categoria("Licores", R.drawable.licoresimg));
+        listaCategoria.add(new Categoria("Cremas", R.drawable.cremasimg));
+        listaCategoria.add(new Categoria("Sin Alcohol", R.drawable.noal));
+        listaCategoria.add(new Categoria("Otros", R.drawable.otrosimg));
     }
 
     public String getNombre() {

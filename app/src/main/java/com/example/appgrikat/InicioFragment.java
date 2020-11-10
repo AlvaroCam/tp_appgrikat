@@ -132,7 +132,7 @@ public class InicioFragment extends Fragment implements Response.Listener<JSONOb
         }
 
         public void asignarInformacion(Ofertas miOferta){
-            imagenDetalle.setImageResource(miOferta.getIdDrawable());
+           // imagenDetalle.setImageResource(miOferta.getIdDrawable());
             textDescripcion.setText(miOferta.getInfo());
         }
     }

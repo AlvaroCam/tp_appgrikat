@@ -16,10 +16,10 @@ public class Bebidas {
         this.descrip=descrip;
         this.idDrawable=idDrawable;
     }
-    public static final List<Bebidas> listaBebidas= new ArrayList<>();
-    static {
-        listaBebidas.add(new Bebidas(25,"leche", " 100% peruana", R.drawable.imagenof));
+    public Bebidas(){
+
     }
+    static  List<Bebidas> buscarbebidas= new ArrayList<Bebidas>();
     public double getPrecio(){
         return  precio;
     }
@@ -33,5 +33,8 @@ public class Bebidas {
     }
     public int getIdDrawable(){
         return  idDrawable;
+    }
+    public  static  void  setBuscarbebidas( List<Bebidas> bebida ){
+        buscarbebidas=bebida;
     }
 }

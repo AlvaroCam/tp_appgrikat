@@ -2,10 +2,10 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/contenedorRestaurantes">
+    android:id="@+id/contenedorlocales">
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/idreciclador_restaurantes"
+        android:id="@+id/idreciclador_locales"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:color/darker_gray"/>
