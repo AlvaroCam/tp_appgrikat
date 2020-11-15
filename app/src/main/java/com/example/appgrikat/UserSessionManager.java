@@ -35,13 +35,13 @@ public class UserSessionManager {
         return preferences.getBoolean("sesion", false);
     }
 
-    public Usuario getSesion() {
+  /*  public Usuario getSesion() {
         if (sesion == null) {
             sesion = new Usuario(preferences.getString("correo_persona", ""), preferences.getString("nombre_persona",
                     ""), preferences.getString("apellido_persona", ""),
                     preferences.getString("telefono_persona", ""), preferences.getString("pass", ""));
         }
         return sesion;
-    }
+    }*/
 }
 

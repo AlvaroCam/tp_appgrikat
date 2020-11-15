@@ -5,36 +5,68 @@ import java.util.List;
 
 
 public class Bebidas {
+    private int id_bebida;
     private double precio;
     private String nombre;
-    private  String descrip;
-    private int idDrawable;
+    private String descripcion;
+    private byte[] idDrawable;
 
-    public Bebidas(double precio ,String nombre,String descrip,int idDrawable){
-        this.precio= precio;
-        this.nombre=nombre;
-        this.descrip=descrip;
-        this.idDrawable=idDrawable;
-    }
-    public Bebidas(){
-
-    }
-    static  List<Bebidas> buscarbebidas= new ArrayList<Bebidas>();
-    public double getPrecio(){
-        return  precio;
+    public Bebidas(int id_bebida, double precio, String nombre, String descripcion, byte[] idDrawable) {
+        this.id_bebida = id_bebida;
+        this.precio = precio;
+        this.nombre = nombre;
+        this.descripcion= descripcion;
+        this.idDrawable = idDrawable;
     }
 
-    public String getNombre(){
-        return  nombre;
+
+    public Bebidas() {
     }
 
-    public String getDescrip(){
-        return  descrip;
+    static  List<Bebidas> buscarbebida= new ArrayList<Bebidas>();
+
+
+
+    public  static  void  setBuscarbebida( List<Bebidas> bebidas ){
+        buscarbebida=bebidas;
     }
-    public int getIdDrawable(){
-        return  idDrawable;
+    public byte[] getIdDrawable() {
+        return idDrawable;
     }
-    public  static  void  setBuscarbebidas( List<Bebidas> bebida ){
-        buscarbebidas=bebida;
+
+    public void setIdDrawable(byte[] idDrawable) {
+        this.idDrawable = idDrawable;
     }
+    public int getId_bebida() {
+        return id_bebida;
+    }
+
+    public void setId_bebida(int id_bebida) {
+        this.id_bebida = id_bebida;
+    }
+
+    public double getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(double precio) {
+        this.precio = precio;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
 }

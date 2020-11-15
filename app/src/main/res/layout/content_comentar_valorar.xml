@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.example.appgrikat.DetalleActivity"
-    tools:showIn="@layout/activity_detalle">
+    tools:context="com.example.appgrikat.ComentarValorarActivity"
+    tools:showIn="@layout/activity_comentar_valorar">
 
 </androidx.constraintlayout.widget.ConstraintLayout>

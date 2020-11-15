@@ -9,35 +9,43 @@
 
 
 
-        <EditText
-            android:id="@+id/txtbuscar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ems="16"
-            android:hint="Buscar..."
-            android:inputType="textPersonName"
-            android:singleLine="false"
-            android:visibility="visible" />
+    <EditText
+        android:id="@+id/eTBuscar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="16"
+        android:hint="Buscar..."
+        android:inputType="textPersonName"
+        android:singleLine="false"
+        android:visibility="visible" />
 
-        <SearchView
-            android:id="@+id/searchView"
+    <SearchView
+        android:id="@+id/sVBuscar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignBottom="@+id/eTBuscar"
+        android:layout_marginStart="5dp"
+        android:layout_toEndOf="@+id/eTBuscar" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/eTBuscar"
+        android:orientation="vertical">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/idRecycler"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_alignBottom="@+id/txtbuscar"
-            android:layout_marginStart="5dp"
-            android:layout_toEndOf="@+id/txtbuscar" />
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_below="@+id/txtbuscar"
-    android:orientation="vertical">
+            android:layout_height="wrap_content">
 
-    <ImageView
+        </androidx.recyclerview.widget.RecyclerView>
+
+
+        <ImageView
         android:id="@+id/imagenLogo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical|center"
-        android:src="@mipmap/ic_launcher" />
+        android:src="@drawable/logoappgrikat" />
 
         <TextView
             android:layout_width="wrap_content"
