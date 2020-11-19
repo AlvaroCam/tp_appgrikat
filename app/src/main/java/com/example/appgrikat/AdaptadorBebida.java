@@ -118,6 +118,7 @@ public class AdaptadorBebida extends RecyclerView.Adapter<AdaptadorBebida.ViewHo
                                     bebida.setNombre(((JSONObject) response.get(k)).getString("nombre"));
                                     bebida.setPrecio(((JSONObject) response.get(k)).getDouble("precio"));
                                     //bebida.setIdDrawable(Base64.decode(((JSONObject) response.get(k)).getString("imagen"),Base64.DEFAULT));
+                                    bebida.setImagenbe(((JSONObject) response.get(k)).getString("imagen"));
                                     listarBebidas.add(bebida);
 
                                   Toast.makeText(context, ((JSONObject) response.get(k)).getString("nombre"), Toast.LENGTH_SHORT).show();
@@ -157,7 +158,7 @@ public class AdaptadorBebida extends RecyclerView.Adapter<AdaptadorBebida.ViewHo
         holder.lbldescripcion.setText(Bebidas.buscarbebida.get(position).getDescripcion());
         final Bebidas item = Bebidas.buscarbebida.get(position);
 //        Bitmap bmp = BitmapFactory.decodeByteArray(item.getIdDrawable(), 0, item.getIdDrawable().length);
-        Glide.with(holder.itemView.getContext()).load(item.getIdDrawable())
+        Glide.with(holder.itemView.getContext()).load(item.getImagenbe())
                 .apply(new RequestOptions().centerCrop().placeholder(R.mipmap.ic_launcher_round))
                 .into(holder.idImagen);
         holder.cardView.setOnClickListener(new View.OnClickListener() {

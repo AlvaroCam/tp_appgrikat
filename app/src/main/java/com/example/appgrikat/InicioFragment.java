@@ -94,12 +94,12 @@ public class InicioFragment extends Fragment implements Response.Listener<JSONOb
         jsonObject = response ;
         usuario.setCorreo_persona(jsonObject.optString("correo_persona"));
         usuario.setPass(jsonObject.optString("contraseña"));
-       // usuario.setNames(jsonObject.optString("nombre_persona"));
+        usuario.setNombre_persona(jsonObject.optString("nombre_persona"));
         Toast.makeText(getContext(),"Se ha encontrado el usuario: " +usuario.getNombre_persona(), Toast.LENGTH_SHORT).show();
 
     }
     private void iniciarsesion() {
-        String url = "http://172.20.56.255:8084/Appgrikat/buscarUsuarioCorreo/" + cajaUser.getText().toString().trim();
+        String url = "http://localhost/Appgrikat/buscarUsuarioCorreo/" + cajaUser.getText().toString().trim();
         jrq2 = new JsonObjectRequest(Request.Method.GET, url, (JSONObject) null, this, this);
         rq.add(jrq2);
 

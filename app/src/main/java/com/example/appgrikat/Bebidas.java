@@ -9,14 +9,15 @@ public class Bebidas {
     private double precio;
     private String nombre;
     private String descripcion;
-    private byte[] idDrawable;
+    private String imagenbe;
+    //private byte[] idDrawable;
 
-    public Bebidas(int id_bebida, double precio, String nombre, String descripcion, byte[] idDrawable) {
+    public Bebidas(int id_bebida, double precio, String nombre, String descripcion, String imagenbe) {
         this.id_bebida = id_bebida;
         this.precio = precio;
         this.nombre = nombre;
         this.descripcion= descripcion;
-        this.idDrawable = idDrawable;
+        this.imagenbe = imagenbe;
     }
 
 
@@ -30,12 +31,12 @@ public class Bebidas {
     public  static  void  setBuscarbebida( List<Bebidas> bebidas ){
         buscarbebida=bebidas;
     }
-    public byte[] getIdDrawable() {
-        return idDrawable;
+    public String getImagenbe() {
+        return imagenbe;
     }
 
-    public void setIdDrawable(byte[] idDrawable) {
-        this.idDrawable = idDrawable;
+    public void setImagenbe(String imagenbe) {
+        this.imagenbe = imagenbe;
     }
     public int getId_bebida() {
         return id_bebida;

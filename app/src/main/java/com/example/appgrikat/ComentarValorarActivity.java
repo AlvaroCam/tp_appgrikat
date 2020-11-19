@@ -55,7 +55,7 @@ public class ComentarValorarActivity extends AppCompatActivity {
         TextView descripcion = findViewById(R.id.txtDescripcion);
         descripcion.setText(Bebidas.buscarbebida.get(pos).getDescripcion());
         ImageView imagen = findViewById(R.id.idDrawable);
-        Glide.with(this).load(Bebidas.buscarbebida.get(pos).getIdDrawable())
+        Glide.with(this).load(Bebidas.buscarbebida.get(pos).getImagenbe())
                 .apply(new RequestOptions().centerCrop().placeholder(R.mipmap.ic_launcher_round))
                 .into(imagen);
         recyclerOfertas = findViewById(R.id.idRecycler);
