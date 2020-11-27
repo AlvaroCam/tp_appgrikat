@@ -50,7 +50,7 @@ public class InicioFragment extends Fragment implements Response.Listener<JSONOb
             public void onClick(View v) {
 
 
-                //aqui pasa algo raro
+                //1
                     iniciarsesion();
                     FragmentTransaction fr = getFragmentManager().beginTransaction();
                     fr.replace(R.id.fragment_container, new PerfilFragment());

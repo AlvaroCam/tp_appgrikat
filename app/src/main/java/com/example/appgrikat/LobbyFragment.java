@@ -35,15 +35,15 @@ public class LobbyFragment extends Fragment {
         /*new GridLayoutManager(getActivity(),1);*/
         recyclerBebidas.setLayoutManager(layoutManager);
         adaptador = new AdaptadorBebida();
-        // adaptador2 = new AdaptadorComentarios();
+        adaptador2 = new AdaptadorComentarios();
         adaptador.llenarbebidas(getContext(),busca.getText().toString());
         recyclerBebidas.setAdapter(adaptador);
         a.setOnSearchClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 adaptador.llenarbebidas(getContext(),busca.getText().toString());
-                //   adaptador2.setPlato();
-                // adaptador2.listarValoraciones(getContext());
+                 adaptador2.getBebida();
+                 adaptador2.listarValoraciones(getContext());
 
             }
         });

@@ -109,7 +109,7 @@ public class AdaptadorBebida extends RecyclerView.Adapter<AdaptadorBebida.ViewHo
                     @Override
                     public void onResponse(JSONArray response) {
                         if(response.length()!=0) {
-                            Log.i("TAGs",response.toString());
+
                             for(int k=0;k<response.length();k++) {
                                 try {
                                     Bebidas bebida = new Bebidas();
