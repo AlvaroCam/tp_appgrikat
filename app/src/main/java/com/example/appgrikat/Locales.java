@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-//Licetti estuvo aquí
+
 public class Locales{
     private String nombre;
     private String descripcion;
