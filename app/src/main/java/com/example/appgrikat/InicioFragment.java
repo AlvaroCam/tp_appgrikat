@@ -17,7 +17,10 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.JsonRequest;
 import com.android.volley.toolbox.Volley;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import androidx.annotation.NonNull;
@@ -88,7 +91,7 @@ public class InicioFragment extends Fragment implements Response.Listener<JSONOb
 
 
 
-        //JSONArray jsonArray = response.optJSONArray("datos");
+        JSONArray jsonArray = response.optJSONArray("datos");
 
         JSONObject jsonObject = null;
         jsonObject = response ;
@@ -132,7 +135,8 @@ public class InicioFragment extends Fragment implements Response.Listener<JSONOb
         }
 
         public void asignarInformacion(Ofertas miOferta){
-           // imagenDetalle.setImageResource(miOferta.getIdDrawable());
+
+
             textDescripcion.setText(miOferta.getInfo());
         }
     }

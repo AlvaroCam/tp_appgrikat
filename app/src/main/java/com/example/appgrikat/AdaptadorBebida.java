@@ -41,14 +41,6 @@ import androidx.recyclerview.widget.RecyclerView;
 public class AdaptadorBebida extends RecyclerView.Adapter<AdaptadorBebida.ViewHolder> {
     List<Bebidas> listarBebidas =new ArrayList<>();
 
-    public List<Bebidas> getListarBebidas() {
-        return listarBebidas;
-    }
-
-    public void setListarBebidas(List<Bebidas> listarBebidas) {
-        this.listarBebidas = listarBebidas;
-    }
-
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         // Campos respectivos de un item
@@ -176,7 +168,7 @@ public class AdaptadorBebida extends RecyclerView.Adapter<AdaptadorBebida.ViewHo
 
     @Override
     public int getItemCount() {
-        return listarBebidas.size();
+        return Bebidas.buscarbebida.size();
     }
 
 

@@ -107,7 +107,7 @@ public class ComentarValorarActivity extends AppCompatActivity {
         RequestQueue que = Volley.newRequestQueue(this);
         final TextView nombre = findViewById(R.id.idcomentario);
 
-    /*    JsonObjectRequest jsonObjectRequest =new JsonObjectRequest(Request.Method.GET, "http://"+Usuario.IP+"/Appgrikat/insertarvaloracion/"+manager.getSesion().getId_usuario()+"/"+ Bebidas.buscarbebida.get(pos).getId_bebida()+"/"+4+"/"+comentario.replaceAll(" ", "%20")
+      JsonObjectRequest jsonObjectRequest =new JsonObjectRequest(Request.Method.GET, "http://angelord-001-site1.etempurl.com/api/valoraciones/"+manager.getSesion().getId_usuario()+"/"+ Bebidas.buscarbebida.get(pos).getId_bebida()+"/"+4+"/"+comentario.replaceAll(" ", "%20")
                 ,null,
                 new Response.Listener<JSONObject>() {
                     @Override
@@ -125,7 +125,7 @@ public class ComentarValorarActivity extends AppCompatActivity {
             }
         }
         );
-        que.add(jsonObjectRequest);*/
+        que.add(jsonObjectRequest);
     }
 }
 

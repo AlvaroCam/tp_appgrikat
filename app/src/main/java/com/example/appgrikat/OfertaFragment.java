@@ -36,7 +36,7 @@ public class OfertaFragment extends Fragment {
         recyclerOfertas.setLayoutManager(layoutManager);
 
         adaptador = new AdaptadorOfertas();
-       /* adaptador.llenarOfertas(getContext()); */
+       adaptador.llenarOfertas(getContext());
         recyclerOfertas.setAdapter(adaptador);
         return view;
 

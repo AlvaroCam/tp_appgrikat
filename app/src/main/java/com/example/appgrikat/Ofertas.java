@@ -8,7 +8,8 @@ import java.util.List;
 public class Ofertas {
     private String nombre;
     private String info;
-    private byte[] idDrawable;
+    private double precio;
+    private String imagen;
 //private int idimagen;
 // private  int imgOfertaDetalle;
 
@@ -16,10 +17,11 @@ public class Ofertas {
 
     }
 
-    public Ofertas(String nombre, String info, byte[]  idDrawable){
+    public Ofertas(String nombre, String info, double precio,String imagen){
         this.nombre=nombre;
         this.info=info;
-        this.idDrawable=idDrawable;
+        this.precio=precio;
+        this.imagen=imagen;
         //this.imgOfertaDetalle=imgOfertaDetalle;
 
     }
@@ -29,6 +31,12 @@ public class Ofertas {
     }
     public String getInfo(){
         return info;
+    }
+    public String getImagen(){
+        return imagen;
+    }
+    public double getPrecio(){
+        return precio;
     }
     //  public int getIdimagen(){return  idimagen;}
     public static  List<Ofertas> listaOfertas= new ArrayList<>();
@@ -45,11 +53,12 @@ public class Ofertas {
         listaOfertas.add(new Ofertas("oferta9","9 ",R.drawable.imagenoferta9));
         */
     }
-    public byte[]  getIdDrawable(){return idDrawable;}
+    //public byte[]  getIdDrawable(){return imagen;}
     public void setNombre(String nombre){ this.nombre=  nombre;}
     public void setInfo(String info){this.info=  info;}
+    public void setPrecio(double precio){this.precio=precio;}
     // public void setIdimagen(int idimagen){this.idimagen=  idimagen;}
-    public void setIdDrawable(byte[]  idDrawable){this.idDrawable=  idDrawable;}
+    public void setImagen(String  imagen){this.imagen=  imagen;}
 
     public static  void  llenarOfertas(List<Ofertas> ofertas){
         listaOfertas=ofertas;
