@@ -41,8 +41,8 @@ public class ComentarValorarActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_comentar_valorar);
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+       // Toolbar toolbar = findViewById(R.id.toolbar);
+        //setSupportActionBar(toolbar);
 
         final int pos = getIntent().getExtras().getInt("pos");
 
@@ -86,7 +86,7 @@ public class ComentarValorarActivity extends AppCompatActivity {
             btnComentar.setEnabled(false);
             txtComentar.setEnabled(false);
         }
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -94,6 +94,8 @@ public class ComentarValorarActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+        */
+
     }
 
     @Override
@@ -107,7 +109,8 @@ public class ComentarValorarActivity extends AppCompatActivity {
         RequestQueue que = Volley.newRequestQueue(this);
         final TextView nombre = findViewById(R.id.idcomentario);
 
-      JsonObjectRequest jsonObjectRequest =new JsonObjectRequest(Request.Method.GET, "http://angelord-001-site1.etempurl.com/api/valoraciones/"+manager.getSesion().getId_usuario()+"/"+ Bebidas.buscarbebida.get(pos).getId_bebida()+"/"+4+"/"+comentario.replaceAll(" ", "%20")
+      //JsonObjectRequest jsonObjectRequest =new JsonObjectRequest(Request.Method.GET, "http://virualca-001-site1.dtempurl.com/api/valoraciones/com"+manager.getSesion().getUsuarioId()+"/"+ Bebidas.buscarbebida.get(pos).getId_bebida()+"/"+4+"/"+comentario.replaceAll(" ", "%20")
+        JsonObjectRequest jsonObjectRequest =new JsonObjectRequest(Request.Method.GET, "http://virualca-001-site1.dtempurl.com/api/valoraciones/com"+manager.getSesion().getUsuarioId()+"/"+ Bebidas.buscarbebida.get(pos).getId_bebida()+"/"+4+"/"+comentario.replaceAll(" ", "%20")
                 ,null,
                 new Response.Listener<JSONObject>() {
                     @Override

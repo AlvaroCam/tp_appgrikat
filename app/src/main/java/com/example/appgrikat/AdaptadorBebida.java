@@ -96,7 +96,7 @@ public class AdaptadorBebida extends RecyclerView.Adapter<AdaptadorBebida.ViewHo
         jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(20000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         que.add(jsonObjectRequest);*/
 
-       JsonArrayRequest jsonArrayRequests =new JsonArrayRequest(Request.Method.GET, "http://angelord-001-site1.etempurl.com/api/bebidas/"+bebidas2,null,
+       JsonArrayRequest jsonArrayRequests =new JsonArrayRequest(Request.Method.GET, "http://virualca-001-site1.dtempurl.com/api/bebidas"+bebidas2,null,
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
@@ -104,6 +104,7 @@ public class AdaptadorBebida extends RecyclerView.Adapter<AdaptadorBebida.ViewHo
 
                             for(int k=0;k<response.length();k++) {
                                 try {
+
                                     Bebidas bebida = new Bebidas();
                                     bebida.setId_bebida(((JSONObject) response.get(k)).getInt("BebidaId"));
                                    bebida.setDescripcion(((JSONObject) response.get(k)).getString("descripcion"));
@@ -113,7 +114,7 @@ public class AdaptadorBebida extends RecyclerView.Adapter<AdaptadorBebida.ViewHo
                                     bebida.setImagenbe(((JSONObject) response.get(k)).getString("imagen"));
                                     listarBebidas.add(bebida);
 
-                                  Toast.makeText(context, ((JSONObject) response.get(k)).getString("nombre"), Toast.LENGTH_SHORT).show();
+                                //Toast.makeText(context, ((JSONObject) response.get(k)).getString("nombre"), Toast.LENGTH_SHORT).show();
 
                                 } catch (JSONException e) {
                                     e.printStackTrace();
@@ -136,12 +137,7 @@ public class AdaptadorBebida extends RecyclerView.Adapter<AdaptadorBebida.ViewHo
         );
          que.add(jsonArrayRequests);
     }
-    @NonNull
-    @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.bebidas_item, parent, false);
-        return new ViewHolder(view);
-    }
+
 
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
@@ -157,7 +153,7 @@ public class AdaptadorBebida extends RecyclerView.Adapter<AdaptadorBebida.ViewHo
             @Override
             public void onClick(View v) {
                 Valoracion val =new Valoracion();
-                val.setId(Bebidas.buscarbebida.get(position).getId_bebida()+"");
+                val.setValoracionId(Bebidas.buscarbebida.get(position).getId_bebida());
                 Intent intent = new Intent(holder.itemView.getContext(), ComentarValorarActivity.class);
                 intent.putExtra("pos", position);
                 Toast.makeText(holder.itemView.getContext(), Bebidas.buscarbebida.get(position).getId_bebida()+"", Toast.LENGTH_LONG).show();
@@ -171,6 +167,12 @@ public class AdaptadorBebida extends RecyclerView.Adapter<AdaptadorBebida.ViewHo
         return Bebidas.buscarbebida.size();
     }
 
+    @NonNull
+    @Override
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.bebidas_item, parent, false);
+        return new ViewHolder(view);
+    }
 
 }
 

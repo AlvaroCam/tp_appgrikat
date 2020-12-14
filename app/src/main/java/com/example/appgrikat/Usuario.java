@@ -1,73 +1,74 @@
 package com.example.appgrikat;
 
 
+import java.io.Serializable;
 
-public class Usuario {
-    private String id_usuario;
-    private String nombre_persona;
-    private String apellido_persona;
-    private String correo_persona;
-    private String pass;
-    private String telefono_persona;
+public class Usuario implements Serializable {
+    private String UsuarioId;
+    private String username;
+    private String nombre;
+    private String correo;
+    private String contrasena;
+    private String celular;
 
     public Usuario() {
 
     }
-    public Usuario(String id_usuario, String nombre_persona, String apellido_persona, String correo_persona, String pass, String telefono_persona) {
-        this.id_usuario = id_usuario;
-        this.nombre_persona = nombre_persona;
-        this.apellido_persona = apellido_persona;
-        this.correo_persona = correo_persona;
-        this.pass = pass;
-        this.telefono_persona = telefono_persona;
+    public Usuario(String UsuarioId,String username,String contrasena , String correo, String nombre, String celular) {
+        this.UsuarioId = UsuarioId;
+        this.username = username;
+        this.contrasena = contrasena;
+        this.correo = correo;
+        this.nombre = nombre;
+        this.celular = celular;
     }
 
-    public String getId_usuario() {
-        return id_usuario;
+    public String getUsuarioId() {
+        return UsuarioId;
     }
 
-    public void setId_usuario(String id_usuario) {
-        this.id_usuario = id_usuario;
+    public void setUsuarioId(String UsuarioId) {
+        this.UsuarioId = UsuarioId;
     }
 
-    public String getNombre_persona() {
-        return nombre_persona;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setNombre_persona(String nombre_persona) {
-        this.nombre_persona = nombre_persona;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public String getApellido_persona() {
-        return apellido_persona;
+    public String getUsername() {
+        return username;
     }
 
-    public void setApellido_persona(String apellido_persona) {
-        this.apellido_persona = apellido_persona;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public String getCorreo_persona() {
-        return correo_persona;
+    public String getCorreo() {
+        return correo;
     }
 
-    public void setCorreo_persona(String correo_persona) {
-        this.correo_persona = correo_persona;
+    public void setCorreo(String correo) {
+        this.correo = correo;
     }
 
-    public String getPass() {
-        return pass;
+    public String getContrasena() {
+        return contrasena;
     }
 
-    public void setPass(String pass) {
-        this.pass = pass;
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
     }
 
-    public String getTelefono_persona() {
-        return telefono_persona;
+    public String getCelular() {
+        return celular;
     }
 
-    public void setTelefono_persona(String telefono_persona) {
-        this.telefono_persona = telefono_persona;
+    public void setCelular(String celular) {
+        this.celular = celular;
     }
 
     public static String IP = "192.168.0.89:8084";

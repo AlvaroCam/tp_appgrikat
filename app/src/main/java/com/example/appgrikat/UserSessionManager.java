@@ -14,22 +14,21 @@ public class UserSessionManager {
         preferences = context.getSharedPreferences("preferenciasMiApp", Context.MODE_PRIVATE);
         editor = preferences.edit();
     }
-    public boolean createSession(String nombre_persona, String apellido_persona, String pass, String correo_persona, String telefono_persona) {
+    public boolean createSession(String UsuarioId,String username,String contrasena, String correo,String nombre,String celular) {
         editor.putBoolean("sesion", true);
-        editor.putString("nombre_persona", nombre_persona);
-        editor.putString("apellido_persona", apellido_persona);
-        editor.putString("pass", pass);
-        editor.putString("correo_persona", correo_persona);
-        editor.putString("telefono_persona", telefono_persona);
+        editor.putString("UsuarioId", UsuarioId);
+        editor.putString("username", username);
+        editor.putString("contrasena", contrasena);
+        editor.putString("correo", correo);
+        editor.putString("nombre", nombre);
+        editor.putString("celular", celular);
         return editor.commit();
     }
-    public boolean closeSession(boolean resp){
-        if (resp == true){
-            editor.putBoolean("sesion", false);
-            return editor.commit();
-        }
-        return false;
+    public boolean closeSession(){
+        editor.putBoolean("session", false);
+        return editor.commit();
     }
+
 
     public boolean checkSession() {
         return preferences.getBoolean("sesion", false);
@@ -37,9 +36,8 @@ public class UserSessionManager {
 
   public Usuario getSesion() {
         if (sesion == null) {
-            sesion = new Usuario(preferences.getString("id_usuario", ""),preferences.getString("correo_persona", ""), preferences.getString("nombre_persona",
-                    ""), preferences.getString("apellido_persona", ""),
-                    preferences.getString("telefono_persona", ""), preferences.getString("pass", ""));
+            sesion = new Usuario(preferences.getString("UsuarioId",""),preferences.getString("username",""),preferences.getString("contrasena", ""),preferences.getString("correo", ""), preferences.getString("nombre",
+                    ""), preferences.getString("celular", ""));
         }
         return sesion;
     }

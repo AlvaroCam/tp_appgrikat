@@ -55,18 +55,18 @@ public class AdaptadorComentarios extends RecyclerView.Adapter<AdaptadorComentar
 
     public void listarValoraciones(final Context context) {
         RequestQueue que = Volley.newRequestQueue(context);
-        JsonArrayRequest jsonArrayRequests =new JsonArrayRequest(Request.Method.GET, "http://"+Usuario.IP+"/Appgrikat/comentariosplato/"+val.getId(),null,
+        JsonArrayRequest jsonArrayRequests =new JsonArrayRequest(Request.Method.GET, "http://virualca-001-site1.dtempurl.com/api/valoraciones/com",null,
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
                         if(response.length()!=0) {
                             for ( int i=0; i<response.length();i++) {
                                 try {
+                                    int valoracionid = ((JSONObject)response.get(i)).getInt("ValoracionId");
                                     String comentario = ((JSONObject)response.get(i)).getString("comentario");
                                     int puntuacion = ((JSONObject)response.get(i)).getInt("puntuacion");
-                                    String nombre = ((JSONObject)response.get(i)).getString("nombre_persona");
-                                    listaValoracion.add(new Valoracion(comentario, puntuacion, nombre));
-                                    Toast.makeText(context, ((JSONObject) response.get(i)).getString("nombre_oferta"), Toast.LENGTH_SHORT).show();
+                                    listaValoracion.add(new Valoracion(valoracionid,comentario, puntuacion));
+                                    Toast.makeText(context, ((JSONObject) response.get(i)).getString("comentario"), Toast.LENGTH_SHORT).show();
 
                                 } catch (JSONException e) {
                                     e.printStackTrace();
@@ -104,7 +104,7 @@ public class AdaptadorComentarios extends RecyclerView.Adapter<AdaptadorComentar
     public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
         final Valoracion item = listaValoracion.get(position);
 
-        holder.nombre.setText(item.getNombre());
+        holder.nombre.setText(item.getPuntuacion());
         holder.comentario.setText(item.getComentar());
     }
 

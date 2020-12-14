@@ -55,7 +55,7 @@ public class AdaptadorOfertas extends RecyclerView.Adapter<AdaptadorOfertas.View
 
     public  void llenarOfertas (final Context context){
         RequestQueue que = Volley.newRequestQueue(context);
-        JsonArrayRequest jsonArrayRequests =new JsonArrayRequest(Request.Method.GET, "http://angelord-001-site1.etempurl.com/api/ofertas",null,
+        JsonArrayRequest jsonArrayRequests =new JsonArrayRequest(Request.Method.GET, "http://virualca-001-site1.dtempurl.com/api/ofertas",null,
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
@@ -64,11 +64,10 @@ public class AdaptadorOfertas extends RecyclerView.Adapter<AdaptadorOfertas.View
                                 try {
                                     Ofertas ofertas = new Ofertas();
                                     ofertas.setNombre(((JSONObject) response.get(u)).getString("nombre"));
-                                    ofertas.setPrecio(((JSONObject) response.get(u)).getDouble("precio"));
-                                   // ofertas.setImagen(((JSONObject) response.get(u)).getString("imagen"));
+                                    //ofertas.setPrecio(((JSONObject) response.get(u)).getDouble("precio"));
+                                   ofertas.setImagen(((JSONObject) response.get(u)).getString("imagen"));
                                     listaOfertas.add(ofertas);
 
-                                    Toast.makeText(context, ((JSONObject) response.get(u)).getString("nombre"), Toast.LENGTH_SHORT).show();
 
                                 } catch (JSONException e) {
                                     e.printStackTrace();

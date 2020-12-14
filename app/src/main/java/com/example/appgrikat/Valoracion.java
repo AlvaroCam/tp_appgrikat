@@ -4,28 +4,27 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Valoracion {
+    private int ValoracionId;
     private String comentar;
     private int puntuacion;
-    private String nombre;
-    public static String id;
 
 
     public Valoracion() {
 
     }
 
-    public  String getId() {
-        return id;
+    public  int getValoracionId() {
+        return ValoracionId;
     }
 
-    public  void setId(String id) {
-        Valoracion.id = id;
+    public  void setValoracionId(int ValoracionId) {
+        this.ValoracionId = ValoracionId;
     }
 
-    public Valoracion(String comentar, int puntuacion, String nombre) {
+    public Valoracion(int ValoracionId,String comentar, int puntuacion) {
+        this.ValoracionId=ValoracionId;
         this.comentar = comentar;
         this.puntuacion = puntuacion;
-        this.nombre = nombre;
     }
 
     public String getComentar() {
@@ -44,13 +43,7 @@ public class Valoracion {
         this.puntuacion = puntuacion;
     }
 
-    public String getNombre() {
-        return nombre;
-    }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
 
     public static List<Valoracion> listaValoracion= new ArrayList<>();
 
