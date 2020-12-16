@@ -156,7 +156,7 @@ public class AdaptadorBebida extends RecyclerView.Adapter<AdaptadorBebida.ViewHo
                 val.setValoracionId(Bebidas.buscarbebida.get(position).getId_bebida());
                 Intent intent = new Intent(holder.itemView.getContext(), ComentarValorarActivity.class);
                 intent.putExtra("pos", position);
-                Toast.makeText(holder.itemView.getContext(), Bebidas.buscarbebida.get(position).getId_bebida()+"", Toast.LENGTH_LONG).show();
+                Toast.makeText(holder.itemView.getContext(), Bebidas.buscarbebida.get(position).getNombre()+"", Toast.LENGTH_LONG).show();
                 holder.itemView.getContext().startActivity(intent);
             }
         });

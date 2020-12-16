@@ -58,7 +58,7 @@ public class DetalleActivity extends AppCompatActivity {
     public  void obtenerLocal (String idR){
         RequestQueue que = Volley.newRequestQueue(this);
         Toast.makeText(getApplicationContext(), ""+idR, Toast.LENGTH_LONG).show();
-        JsonObjectRequest jsonObjectRequest =new JsonObjectRequest(Request.Method.GET, "http://virualca-001-site1.dtempurl.com/api/ofertas/"+idR,null,
+        JsonObjectRequest jsonObjectRequest =new JsonObjectRequest(Request.Method.GET, "http://virualca-001-site1.dtempurl.com/api/oferta/"+idR,null,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {

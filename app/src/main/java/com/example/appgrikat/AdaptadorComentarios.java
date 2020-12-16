@@ -63,9 +63,9 @@ public class AdaptadorComentarios extends RecyclerView.Adapter<AdaptadorComentar
                             for ( int i=0; i<response.length();i++) {
                                 try {
                                     int valoracionid = ((JSONObject)response.get(i)).getInt("ValoracionId");
-                                    String comentario = ((JSONObject)response.get(i)).getString("comentario");
                                     int puntuacion = ((JSONObject)response.get(i)).getInt("puntuacion");
-                                    listaValoracion.add(new Valoracion(valoracionid,comentario, puntuacion));
+                                    String comentario = ((JSONObject)response.get(i)).getString("comentario");
+                                    listaValoracion.add(new Valoracion(valoracionid,puntuacion, comentario));
                                     Toast.makeText(context, ((JSONObject) response.get(i)).getString("comentario"), Toast.LENGTH_SHORT).show();
 
                                 } catch (JSONException e) {
@@ -104,7 +104,7 @@ public class AdaptadorComentarios extends RecyclerView.Adapter<AdaptadorComentar
     public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
         final Valoracion item = listaValoracion.get(position);
 
-        holder.nombre.setText(item.getPuntuacion());
+        //holder.nombre.setText(item.getNombre());
         holder.comentario.setText(item.getComentar());
     }
 

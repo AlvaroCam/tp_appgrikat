@@ -21,10 +21,10 @@ public class Valoracion {
         this.ValoracionId = ValoracionId;
     }
 
-    public Valoracion(int ValoracionId,String comentar, int puntuacion) {
+    public Valoracion(int ValoracionId,int puntuacion,String comentar) {
         this.ValoracionId=ValoracionId;
-        this.comentar = comentar;
         this.puntuacion = puntuacion;
+        this.comentar = comentar;
     }
 
     public String getComentar() {

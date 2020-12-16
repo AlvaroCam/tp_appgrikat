@@ -33,7 +33,7 @@ public class ComentarValorarActivity extends AppCompatActivity {
     Valoracion val=new Valoracion();
     private List<Valoracion> listaValoracion = new ArrayList<>();
     private UserSessionManager manager;
-    private RecyclerView recyclerOfertas;
+    private RecyclerView recyclerCom;
     private LinearLayoutManager layoutManager;
     private AdaptadorComentarios adaptador;
     @Override
@@ -58,13 +58,13 @@ public class ComentarValorarActivity extends AppCompatActivity {
         Glide.with(this).load(Bebidas.buscarbebida.get(pos).getImagenbe())
                 .apply(new RequestOptions().centerCrop().placeholder(R.mipmap.ic_launcher_round))
                 .into(imagen);
-        recyclerOfertas = findViewById(R.id.idRecycler);
+        recyclerCom = findViewById(R.id.idRecyclerComent);
         layoutManager = new LinearLayoutManager(this);
-        recyclerOfertas.setLayoutManager(layoutManager);
+        recyclerCom.setLayoutManager(layoutManager);
 
         adaptador = new AdaptadorComentarios();
         adaptador.listarValoraciones(this);
-        recyclerOfertas.setAdapter(adaptador);
+        recyclerCom.setAdapter(adaptador);
 
         final EditText txtComentar = findViewById(R.id.txtComentar);
         ImageButton btnComentar = findViewById(R.id.btnComentar);
@@ -110,7 +110,7 @@ public class ComentarValorarActivity extends AppCompatActivity {
         final TextView nombre = findViewById(R.id.idcomentario);
 
       //JsonObjectRequest jsonObjectRequest =new JsonObjectRequest(Request.Method.GET, "http://virualca-001-site1.dtempurl.com/api/valoraciones/com"+manager.getSesion().getUsuarioId()+"/"+ Bebidas.buscarbebida.get(pos).getId_bebida()+"/"+4+"/"+comentario.replaceAll(" ", "%20")
-        JsonObjectRequest jsonObjectRequest =new JsonObjectRequest(Request.Method.GET, "http://virualca-001-site1.dtempurl.com/api/valoraciones/com"+manager.getSesion().getUsuarioId()+"/"+ Bebidas.buscarbebida.get(pos).getId_bebida()+"/"+4+"/"+comentario.replaceAll(" ", "%20")
+        JsonObjectRequest jsonObjectRequest =new JsonObjectRequest(Request.Method.POST, "http://virualca-001-site1.dtempurl.com/api/valoraciones/pun/"+manager.getSesion().getUsuarioId()+"/"+ Bebidas.buscarbebida.get(pos).getId_bebida()+"/"+comentario.replaceAll(" ", "%20")
                 ,null,
                 new Response.Listener<JSONObject>() {
                     @Override

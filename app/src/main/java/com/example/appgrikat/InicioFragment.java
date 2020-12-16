@@ -130,7 +130,6 @@ public class InicioFragment extends Fragment implements Response.Listener<JSONOb
                         try {
 
                             if( cajaPas.getText().toString().equals(response.getString("contrasena"))) {
-                                Log.i("TAGs", "aquie");
                                 manager.createSession(response.getString("UsuarioId"),response.getString("username"),
                                         response.getString("contrasena"), response.getString("correo"),response.getString("nombre"),
                                         response.getString("celular"));

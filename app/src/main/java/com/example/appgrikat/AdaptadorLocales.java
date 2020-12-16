@@ -64,7 +64,6 @@ public class AdaptadorLocales  extends RecyclerView.Adapter<AdaptadorLocales.Vie
 
                             for(int k=0;k<response.length();k++) {
                                 try {
-                                    Toast.makeText(context, ((JSONObject) response.get(k)).getString("nombre"), Toast.LENGTH_SHORT).show();
                                     Locales loc = new Locales();
                                     loc.setNombre(((JSONObject) response.get(k)).getString("nombre"));
                                   loc.setDescripcion(((JSONObject) response.get(k)).getString("descripcion"));
