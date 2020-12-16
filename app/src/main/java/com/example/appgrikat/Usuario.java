@@ -4,7 +4,7 @@ package com.example.appgrikat;
 import java.io.Serializable;
 
 public class Usuario implements Serializable {
-    private String UsuarioId;
+    private int UsuarioId;
     private String username;
     private String nombre;
     private String correo;
@@ -14,7 +14,7 @@ public class Usuario implements Serializable {
     public Usuario() {
 
     }
-    public Usuario(String UsuarioId,String username,String contrasena , String correo, String nombre, String celular) {
+    public Usuario(int UsuarioId,String username,String contrasena , String correo, String nombre, String celular) {
         this.UsuarioId = UsuarioId;
         this.username = username;
         this.contrasena = contrasena;
@@ -23,11 +23,11 @@ public class Usuario implements Serializable {
         this.celular = celular;
     }
 
-    public String getUsuarioId() {
+    public int getUsuarioId() {
         return UsuarioId;
     }
 
-    public void setUsuarioId(String UsuarioId) {
+    public void setUsuarioId(int UsuarioId) {
         this.UsuarioId = UsuarioId;
     }
 

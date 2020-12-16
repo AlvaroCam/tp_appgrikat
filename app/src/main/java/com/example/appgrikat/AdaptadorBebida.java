@@ -13,7 +13,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.SearchView;
 import android.widget.TextView;
-import android.widget.Toast;
+
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -63,6 +63,7 @@ public class AdaptadorBebida extends RecyclerView.Adapter<AdaptadorBebida.ViewHo
         }
     }
     public  void llenarbebidas(final Context context, String bebidas2) {
+        listarBebidas.clear();
         RequestQueue que = Volley.newRequestQueue(context);
         /*JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, "https://amadis-backend.herokuapp.com/api/people", null, new Response.Listener<JSONObject>() {
             @Override
@@ -123,15 +124,15 @@ public class AdaptadorBebida extends RecyclerView.Adapter<AdaptadorBebida.ViewHo
                             Bebidas.setBuscarbebida(listarBebidas);
                             notifyDataSetChanged();
                         }else{
-                            Toast.makeText(context, ""+ response.length(), Toast.LENGTH_SHORT).show();
+//                            Toast.makeText(context, ""+ response.length(), Toast.LENGTH_SHORT).show();
                         }
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.i("TAG",error.toString());
+               // Log.i("TAG",error.toString());
 
-                Toast.makeText(context,error.toString(),Toast.LENGTH_SHORT).show();
+             //   Toast.makeText(context,error.toString(),Toast.LENGTH_SHORT).show();
             }
         }
         );
@@ -156,7 +157,7 @@ public class AdaptadorBebida extends RecyclerView.Adapter<AdaptadorBebida.ViewHo
                 val.setValoracionId(Bebidas.buscarbebida.get(position).getId_bebida());
                 Intent intent = new Intent(holder.itemView.getContext(), ComentarValorarActivity.class);
                 intent.putExtra("pos", position);
-                Toast.makeText(holder.itemView.getContext(), Bebidas.buscarbebida.get(position).getNombre()+"", Toast.LENGTH_LONG).show();
+               // Toast.makeText(holder.itemView.getContext(), Bebidas.buscarbebida.get(position).getNombre()+"", Toast.LENGTH_LONG).show();
                 holder.itemView.getContext().startActivity(intent);
             }
         });

@@ -54,6 +54,7 @@ public class AdaptadorLocales  extends RecyclerView.Adapter<AdaptadorLocales.Vie
 
 
     public  void llenarlocales(final Context context) {
+        listarLocales.clear();
         RequestQueue que = Volley.newRequestQueue(context);
 
         JsonArrayRequest jsonArrayRequests =new JsonArrayRequest(Request.Method.GET, "http://virualca-001-site1.dtempurl.com/api/locales",null,

@@ -43,7 +43,7 @@ public class LobbyFragment extends Fragment {
             public void onClick(View v) {
                 adaptador.llenarbebidas(getContext(),busca.getText().toString());
                  adaptador2.getBebida();
-                 adaptador2.listarValoraciones(getContext());
+                 adaptador2.listarValoraciones(getContext(),1);
 
             }
         });

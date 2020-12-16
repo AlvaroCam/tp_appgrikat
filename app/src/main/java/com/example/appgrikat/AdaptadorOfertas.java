@@ -54,6 +54,7 @@ public class AdaptadorOfertas extends RecyclerView.Adapter<AdaptadorOfertas.View
     }
 
     public  void llenarOfertas (final Context context){
+        listaOfertas.clear();
         RequestQueue que = Volley.newRequestQueue(context);
         JsonArrayRequest jsonArrayRequests =new JsonArrayRequest(Request.Method.GET, "http://virualca-001-site1.dtempurl.com/api/ofertas",null,
                 new Response.Listener<JSONArray>() {

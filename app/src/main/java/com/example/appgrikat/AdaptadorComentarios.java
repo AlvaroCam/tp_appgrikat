@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
+
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -59,9 +59,10 @@ public class AdaptadorComentarios extends RecyclerView.Adapter<AdaptadorComentar
         this.bebida = bebida;
     }
 
-    public void listarValoraciones(final Context context) {
+    public void listarValoraciones(final Context context, int id) {
+        listaValoracion.clear();
         RequestQueue que = Volley.newRequestQueue(context);
-        JsonArrayRequest jsonArrayRequests =new JsonArrayRequest(Request.Method.GET, "http://virualca-001-site1.dtempurl.com/api/valoraciones/com",null,
+        JsonArrayRequest jsonArrayRequests =new JsonArrayRequest(Request.Method.GET, "http://virualca-001-site1.dtempurl.com/api/valoraciones/com/"+id,null,
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
@@ -81,14 +82,14 @@ public class AdaptadorComentarios extends RecyclerView.Adapter<AdaptadorComentar
                             Valoracion.llenarValoracion(listaValoracion);
                             notifyDataSetChanged();
                         }else{
-                            Toast.makeText(context, ""+ response.length(), Toast.LENGTH_SHORT).show();
+                      //      Toast.makeText(context, ""+ response.length(), Toast.LENGTH_SHORT).show();
                         }
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
 
-                Toast.makeText(context,error.toString(),Toast.LENGTH_SHORT).show();
+              //  Toast.makeText(context,error.toString(),Toast.LENGTH_SHORT).show();
 
             }
         }
@@ -109,7 +110,7 @@ public class AdaptadorComentarios extends RecyclerView.Adapter<AdaptadorComentar
     public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
         final Valoracion item = listaValoracion.get(position);
 
-        //holder.nombre.setText(item.getNombre());
+//        holder.nombre.setText(item.getPuntuacion());
         holder.comentario.setText(item.getComentar());
     }
 

@@ -1,12 +1,12 @@
 package com.example.appgrikat;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -53,6 +53,8 @@ public class ComentarValorarActivity extends AppCompatActivity {
 
         setTitle(Bebidas.buscarbebida.get(pos).getNombre());
 
+       // TextView nombreu = findViewById(R.id.lblNombre);
+        //nombreu.setText(manager.getSesion().getNombre());
         TextView descripcion = findViewById(R.id.txtDescripcion);
         descripcion.setText(Bebidas.buscarbebida.get(pos).getDescripcion());
         ImageView imagen = findViewById(R.id.idDrawable);
@@ -64,7 +66,7 @@ public class ComentarValorarActivity extends AppCompatActivity {
         recyclerCom.setLayoutManager(layoutManager);
 
         adaptador = new AdaptadorComentarios();
-        adaptador.listarValoraciones(this);
+        adaptador.listarValoraciones(this,Bebidas.buscarbebida.get(pos).getId_bebida());
         recyclerCom.setAdapter(adaptador);
 
         final EditText txtComentar = findViewById(R.id.txtComentar);
@@ -77,8 +79,8 @@ public class ComentarValorarActivity extends AppCompatActivity {
                 }
                 insertarValoracion(pos, txtComentar.getText().toString());
                 adaptador.setListaValoracion(new ArrayList<Valoracion>());
-                adaptador.listarValoraciones(getApplicationContext());
-                recyclerCom.setAdapter(adaptador);
+               adaptador.listarValoraciones(getApplicationContext(),Bebidas.buscarbebida.get(pos).getId_bebida());
+               recyclerCom.setAdapter(adaptador);
                 txtComentar.setText("");
             }
         });
@@ -117,17 +119,18 @@ public class ComentarValorarActivity extends AppCompatActivity {
 
 
         try {
+            valoracion.put("comentario",comentario);
             valoracion.put("puntuacion",1);
-            valoracion.put("comentario",comentario.replaceAll(" ", "%20"));
             valoracion.put("UsuarioId",manager.getSesion().getUsuarioId());
             valoracion.put("BebidaId",Bebidas.buscarbebida.get(pos).getId_bebida());
+           // Log.i("TAGs",Bebidas.buscarbebida.get(pos).getId_bebida()+"");
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
 
         //JsonObjectRequest jsonObjectRequest =new JsonObjectRequest(Request.Method.GET, "http://virualca-001-site1.dtempurl.com/api/valoraciones/com"+manager.getSesion().getUsuarioId()+"/"+ Bebidas.buscarbebida.get(pos).getId_bebida()+"/"+4+"/"+comentario.replaceAll(" ", "%20")
-        JsonObjectRequest jsonObjectRequest =new JsonObjectRequest(Request.Method.POST, "http://virualca-001-site1.dtempurl.com/api/valoraciones/pun/",valoracion,
+        JsonObjectRequest jsonObjectRequest =new JsonObjectRequest(Request.Method.POST, "http://virualca-001-site1.dtempurl.com/api/valoraciones/pun",valoracion,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
@@ -138,7 +141,7 @@ public class ComentarValorarActivity extends AppCompatActivity {
                 if (error.toString().contains("JSONException")) {
                     nombre.setText("Sin comentarios");
                 } else {
-                    Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_LONG).show();
+               //     Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_LONG).show();
                 }
 
             }

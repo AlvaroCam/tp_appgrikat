@@ -14,9 +14,9 @@ public class UserSessionManager {
         preferences = context.getSharedPreferences("preferenciasMiApp", Context.MODE_PRIVATE);
         editor = preferences.edit();
     }
-    public boolean createSession(String UsuarioId,String username,String contrasena, String correo,String nombre,String celular) {
+    public boolean createSession(int UsuarioId,String username,String contrasena, String correo,String nombre,String celular) {
         editor.putBoolean("sesion", true);
-        editor.putString("UsuarioId", UsuarioId);
+        editor.putInt("UsuarioId", UsuarioId);
         editor.putString("username", username);
         editor.putString("contrasena", contrasena);
         editor.putString("correo", correo);
@@ -36,7 +36,7 @@ public class UserSessionManager {
 
   public Usuario getSesion() {
         if (sesion == null) {
-            sesion = new Usuario(preferences.getString("UsuarioId",""),preferences.getString("username",""),preferences.getString("contrasena", ""),preferences.getString("correo", ""), preferences.getString("nombre",
+            sesion = new Usuario(preferences.getInt("UsuarioId",0),preferences.getString("username",""),preferences.getString("contrasena", ""),preferences.getString("correo", ""), preferences.getString("nombre",
                     ""), preferences.getString("celular", ""));
         }
         return sesion;
