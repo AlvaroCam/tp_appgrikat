@@ -19,6 +19,7 @@ import com.bumptech.glide.request.RequestOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -75,6 +76,10 @@ public class ComentarValorarActivity extends AppCompatActivity {
                     Snackbar.make(txtComentar, "Este campo no puede quedar en blanco.", Snackbar.LENGTH_LONG).show();
                 }
                 insertarValoracion(pos, txtComentar.getText().toString());
+                adaptador.setListaValoracion(new ArrayList<Valoracion>());
+                adaptador.listarValoraciones(getApplicationContext());
+                recyclerCom.setAdapter(adaptador);
+                txtComentar.setText("");
             }
         });
 
@@ -108,10 +113,21 @@ public class ComentarValorarActivity extends AppCompatActivity {
     public  void insertarValoracion (int pos, String comentario){
         RequestQueue que = Volley.newRequestQueue(this);
         final TextView nombre = findViewById(R.id.idcomentario);
+        final JSONObject valoracion = new JSONObject();
 
-      //JsonObjectRequest jsonObjectRequest =new JsonObjectRequest(Request.Method.GET, "http://virualca-001-site1.dtempurl.com/api/valoraciones/com"+manager.getSesion().getUsuarioId()+"/"+ Bebidas.buscarbebida.get(pos).getId_bebida()+"/"+4+"/"+comentario.replaceAll(" ", "%20")
-        JsonObjectRequest jsonObjectRequest =new JsonObjectRequest(Request.Method.POST, "http://virualca-001-site1.dtempurl.com/api/valoraciones/pun/"+manager.getSesion().getUsuarioId()+"/"+ Bebidas.buscarbebida.get(pos).getId_bebida()+"/"+comentario.replaceAll(" ", "%20")
-                ,null,
+
+        try {
+            valoracion.put("puntuacion",1);
+            valoracion.put("comentario",comentario.replaceAll(" ", "%20"));
+            valoracion.put("UsuarioId",manager.getSesion().getUsuarioId());
+            valoracion.put("BebidaId",Bebidas.buscarbebida.get(pos).getId_bebida());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
+        //JsonObjectRequest jsonObjectRequest =new JsonObjectRequest(Request.Method.GET, "http://virualca-001-site1.dtempurl.com/api/valoraciones/com"+manager.getSesion().getUsuarioId()+"/"+ Bebidas.buscarbebida.get(pos).getId_bebida()+"/"+4+"/"+comentario.replaceAll(" ", "%20")
+        JsonObjectRequest jsonObjectRequest =new JsonObjectRequest(Request.Method.POST, "http://virualca-001-site1.dtempurl.com/api/valoraciones/pun/",valoracion,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {

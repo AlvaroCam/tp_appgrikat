@@ -28,6 +28,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class AdaptadorComentarios extends RecyclerView.Adapter<AdaptadorComentarios.ViewHolder>  {
     Valoracion val=new Valoracion();
+
+    public void setListaValoracion(List<Valoracion> listaValoracion) {
+        this.listaValoracion = listaValoracion;
+    }
+
     List<Valoracion> listaValoracion =new ArrayList<>();
     public String bebida;
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -44,6 +49,7 @@ public class AdaptadorComentarios extends RecyclerView.Adapter<AdaptadorComentar
             cardView = view.findViewById(R.id.cardview_comentario_id);
         }
     }
+
 
     public String getBebida() {
         return bebida;
@@ -66,7 +72,6 @@ public class AdaptadorComentarios extends RecyclerView.Adapter<AdaptadorComentar
                                     int puntuacion = ((JSONObject)response.get(i)).getInt("puntuacion");
                                     String comentario = ((JSONObject)response.get(i)).getString("comentario");
                                     listaValoracion.add(new Valoracion(valoracionid,puntuacion, comentario));
-                                    Toast.makeText(context, ((JSONObject) response.get(i)).getString("comentario"), Toast.LENGTH_SHORT).show();
 
                                 } catch (JSONException e) {
                                     e.printStackTrace();
