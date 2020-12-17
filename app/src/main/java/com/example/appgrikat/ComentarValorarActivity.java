@@ -82,6 +82,7 @@ public class ComentarValorarActivity extends AppCompatActivity {
                adaptador.listarValoraciones(getApplicationContext(),Bebidas.buscarbebida.get(pos).getId_bebida());
                recyclerCom.setAdapter(adaptador);
                 txtComentar.setText("");
+
             }
         });
 
@@ -120,7 +121,7 @@ public class ComentarValorarActivity extends AppCompatActivity {
 
         try {
             valoracion.put("comentario",comentario);
-            valoracion.put("puntuacion",1);
+            valoracion.put("puntuacion",0);
             valoracion.put("UsuarioId",manager.getSesion().getUsuarioId());
             valoracion.put("BebidaId",Bebidas.buscarbebida.get(pos).getId_bebida());
            // Log.i("TAGs",Bebidas.buscarbebida.get(pos).getId_bebida()+"");
@@ -130,7 +131,7 @@ public class ComentarValorarActivity extends AppCompatActivity {
 
 
         //JsonObjectRequest jsonObjectRequest =new JsonObjectRequest(Request.Method.GET, "http://virualca-001-site1.dtempurl.com/api/valoraciones/com"+manager.getSesion().getUsuarioId()+"/"+ Bebidas.buscarbebida.get(pos).getId_bebida()+"/"+4+"/"+comentario.replaceAll(" ", "%20")
-        JsonObjectRequest jsonObjectRequest =new JsonObjectRequest(Request.Method.POST, "http://virualca-001-site1.dtempurl.com/api/valoraciones/pun",valoracion,
+        JsonObjectRequest jsonObjectRequest =new JsonObjectRequest(Request.Method.POST, "http://virualca-001-site1.dtempurl.com/api/valoraciones/com",valoracion,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {

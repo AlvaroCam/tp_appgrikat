@@ -97,7 +97,7 @@ public class AdaptadorBebida extends RecyclerView.Adapter<AdaptadorBebida.ViewHo
         jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(20000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         que.add(jsonObjectRequest);*/
 
-       JsonArrayRequest jsonArrayRequests =new JsonArrayRequest(Request.Method.GET, "http://virualca-001-site1.dtempurl.com/api/bebidas"+bebidas2,null,
+       JsonArrayRequest jsonArrayRequests =new JsonArrayRequest(Request.Method.GET, "http://virualca-001-site1.dtempurl.com/api/bebidas/"+bebidas2,null,
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {

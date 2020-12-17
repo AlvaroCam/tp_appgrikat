@@ -54,7 +54,7 @@
                     android:id="@+id/customer"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Hans Simbala" />
+                    android:text="Alvaro Cam" />
 
                 <TextView
                     android:id="@+id/address"
