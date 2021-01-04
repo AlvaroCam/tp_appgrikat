@@ -5,26 +5,37 @@ import java.util.List;
 
 
 public class Sugerencias {
-    private String nombre;
-    private String descripcion;
-    private int idDrawable;
-    public Sugerencias(String nombre, String descripcion, int idDrawable){
-        this.nombre=nombre;
-        this.descripcion=descripcion;
-        this.idDrawable=idDrawable;
+    private int BebidaId;
+    private String tituloSug;
+    private String contentSug;
+    private String cadenaImagenSug;
+
+    public Sugerencias(){}
+
+    public Sugerencias(int BebidaId, String tituloSug, String contentSug, String cadenaImagenSug){
+        this.BebidaId=BebidaId;
+        this.tituloSug=tituloSug;
+        this.contentSug=contentSug;
+        this.cadenaImagenSug=cadenaImagenSug;
 
     }
-    public static final List<Sugerencias> listaSugerencias= new ArrayList<Sugerencias>();
-    static {
-        listaSugerencias.add(new Sugerencias("7colores","muerteconfirmada",R.drawable.ic_oferta));
+    public static List<Sugerencias> listaSugerencias= new ArrayList<Sugerencias>();
+    public int getBebidaId(){
+        return BebidaId;
     }
-    public String getNombre(){
-        return  nombre;
+    public String getTituloSug(){
+        return tituloSug;
     }
-    public String getDescripcion(){
-        return descripcion;
+    public String getContentSug(){
+        return contentSug;
     }
-    public int getIdDrawable(){
-        return idDrawable;
+    public String getCadenaImagen(){
+        return cadenaImagenSug;
     }
+
+    public void setBebidaId(int BebidaId){this.BebidaId = BebidaId;}
+    public void setTituloSug(String TituloSug){this.tituloSug =TituloSug; }
+    public void setContentSug(String ContentSug){ this.contentSug = ContentSug; }
+    public void setCadenaImagen(String CadenaImagen){ this.cadenaImagenSug = CadenaImagen; }
+
 }

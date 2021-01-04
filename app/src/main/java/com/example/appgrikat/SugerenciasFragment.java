@@ -9,13 +9,14 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 
 public class SugerenciasFragment extends Fragment {
     private RecyclerView recyclerSugerencias;
-    private LinearLayoutManager layoutManager;
+    private GridLayoutManager layoutManager;
     private AdaptadorSugerencias adaptador;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -27,11 +28,13 @@ public class SugerenciasFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_sugerencias,container,false);
 
         recyclerSugerencias = view.findViewById(R.id.idreciclador_sugerencias);
-        layoutManager = new LinearLayoutManager(getActivity());
+        layoutManager = new GridLayoutManager(getActivity(),2);
         recyclerSugerencias.setLayoutManager(layoutManager);
 
         adaptador = new AdaptadorSugerencias();
+        adaptador.listarSugerencia(getContext());
         recyclerSugerencias.setAdapter(adaptador);
+
         return view;
 
     }
