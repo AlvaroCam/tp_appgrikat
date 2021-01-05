@@ -10,6 +10,7 @@ public class Bebidas {
     private String nombre;
     private String descripcion;
     private String imagenbe;
+    private int puntajePromedio;
     //private byte[] idDrawable;
 
     public Bebidas(int id_bebida, double precio, String nombre, String descripcion, String imagenbe) {
@@ -70,4 +71,11 @@ public class Bebidas {
         this.descripcion = descripcion;
     }
 
+    public int getPuntajePromedio() {
+        return puntajePromedio;
+    }
+
+    public void setPuntajePromedio(int puntajePromedio) {
+        this.puntajePromedio = puntajePromedio;
+    }
 }

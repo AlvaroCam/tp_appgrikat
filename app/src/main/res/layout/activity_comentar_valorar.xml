@@ -25,7 +25,19 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:orientation="vertical">
-
+            <TextView
+                android:id="@+id/lblPuntajePromedio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Puntaje Promedio:"
+                android:textAlignment="center"/>
+            <RatingBar
+                android:id="@+id/rbPuntajePromedio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:saveEnabled="true"
+                android:numStars="5"
+                android:isIndicator="true"/>
             <ImageView
                 android:layout_width="125dp"
                 android:layout_height="170dp"
@@ -39,27 +51,53 @@
                 android:layout_height="wrap_content" />
 
             <LinearLayout
+                android:id="@+id/comentBox"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_marginTop="35dp"
+                android:layout_marginBottom="25dp">
 
-                <EditText
-                    android:id="@+id/txtComentar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="100dp"
-                    android:layout_weight="1"
-                    android:ems="10"
-                    android:inputType="textMultiLine" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="130dp"
+                    android:orientation="vertical"
+                    android:layout_weight="1.0">
+                    <TextView
+                        android:id="@+id/lblTuComentario"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Tu comentario:"
+                        />
+                    <EditText
+                        android:id="@+id/txtComentar"
+                        android:layout_width="310dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:inputType="textMultiLine" />
+                    <RatingBar
+                        android:id="@+id/rbPuntuacion"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:saveEnabled="true"
+                        android:numStars="5"/>
+                </LinearLayout>
 
                 <ImageButton
                     android:id="@+id/btnComentar"
-                    android:layout_width="wrap_content"
+                    android:layout_width="120dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    app:srcCompat="@drawable/ic_send" />
+                    android:layout_weight="1.0"
+                    app:srcCompat="@drawable/ic_send"/>
 
             </LinearLayout>
-
+            <TextView
+                android:id="@+id/lblComentarios"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Comentarios:"/>
             <TextView
                 android:id="@+id/idcomentario"
                 android:layout_width="match_parent"

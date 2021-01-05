@@ -63,39 +63,9 @@ public class AdaptadorBebida extends RecyclerView.Adapter<AdaptadorBebida.ViewHo
         }
     }
     public  void llenarbebidas(final Context context, String bebidas2) {
+
         listarBebidas.clear();
         RequestQueue que = Volley.newRequestQueue(context);
-        /*JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, "https://amadis-backend.herokuapp.com/api/people", null, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-                try {
-                    JSONArray customers = response.getJSONArray("data");
-
-                    for (int i = 0; i < customers.length(); i++) {
-
-                        Bebidas customer = new Bebidas();
-                        JSONObject customerJSONObject = customers.getJSONObject(i);
-                        customer.setNombre(customerJSONObject.getString("name"));
-
-                        listarBebidas.add(customer);
-
-                    }
-                    Toast.makeText(context, listarBebidas.toString(), Toast.LENGTH_SHORT).show();
-                    Log.i("TAGs",listarBebidas.get(1).getNombre());
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-                notifyDataSetChanged();
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-
-                Toast.makeText(context, error.toString(), Toast.LENGTH_SHORT).show();
-            }
-        });
-        jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(20000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-        que.add(jsonObjectRequest);*/
 
        JsonArrayRequest jsonArrayRequests =new JsonArrayRequest(Request.Method.GET, "http://virualca-001-site1.dtempurl.com/api/bebidas/"+bebidas2,null,
                 new Response.Listener<JSONArray>() {
@@ -113,6 +83,7 @@ public class AdaptadorBebida extends RecyclerView.Adapter<AdaptadorBebida.ViewHo
                                     bebida.setPrecio(((JSONObject) response.get(k)).getDouble("precio"));
                                     //bebida.setIdDrawable(Base64.decode(((JSONObject) response.get(k)).getString("imagen"),Base64.DEFAULT));
                                     bebida.setImagenbe(((JSONObject) response.get(k)).getString("imagen"));
+
                                     listarBebidas.add(bebida);
 
                                 //Toast.makeText(context, ((JSONObject) response.get(k)).getString("nombre"), Toast.LENGTH_SHORT).show();

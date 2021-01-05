@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import com.android.volley.Request;
@@ -72,7 +73,9 @@ public class AdaptadorComentarios extends RecyclerView.Adapter<AdaptadorComentar
                                     int valoracionid = ((JSONObject)response.get(i)).getInt("ValoracionId");
                                     int puntuacion = ((JSONObject)response.get(i)).getInt("puntuacion");
                                     String comentario = ((JSONObject)response.get(i)).getString("comentario");
-                                    listaValoracion.add(new Valoracion(valoracionid,puntuacion, comentario));
+                                    //Toast.makeText(context, ((JSONObject)response.get(i)).getJSONObject("Usuario").getString("nombre"), Toast.LENGTH_SHORT).show();
+                                    String nombreUsuario = ((JSONObject)response.get(i)).getJSONObject("Usuario").getString("nombre");
+                                    listaValoracion.add(new Valoracion(valoracionid,puntuacion, comentario, nombreUsuario));
 
                                 } catch (JSONException e) {
                                     e.printStackTrace();
@@ -112,6 +115,7 @@ public class AdaptadorComentarios extends RecyclerView.Adapter<AdaptadorComentar
 
 //        holder.nombre.setText(item.getPuntuacion());
         holder.comentario.setText(item.getComentar());
+        holder.nombre.setText(item.getNombreUsuario());
     }
 
     @Override
