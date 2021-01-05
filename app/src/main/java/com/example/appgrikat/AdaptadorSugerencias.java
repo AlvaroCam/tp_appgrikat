@@ -3,6 +3,8 @@ package com.example.appgrikat;
 
 import android.content.Context;
 import android.content.Intent;
+import android.icu.text.MessagePattern;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +27,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.*;
 
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
@@ -34,44 +37,55 @@ public class AdaptadorSugerencias extends RecyclerView.Adapter<AdaptadorSugerenc
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         // Campos respectivos de un item
-        public TextView nombre;
+        public TextView titulo;
+        public TextView descripcion;
         public ImageView imagen;
         public CardView cardView;
 
         public ViewHolder(View view) {
             super(view);
-            nombre = view.findViewById(R.id.sugerencias_title_id);
+            titulo = view.findViewById(R.id.sugerencias_title_id);
+            descripcion = view.findViewById(R.id.descripcion_sugerencias_id);
             imagen = view.findViewById(R.id.sugerencias_img_view);
             cardView = view.findViewById(R.id.cardview_sugerencias_id);
         }
     }
 
-    public  void llenarSugerencia (final Context context) {
-        /*
+    public  void listarSugerencia (final Context context) {
+
         RequestQueue que = Volley.newRequestQueue(context);
-        JsonArrayRequest jsonArrayRequests =new JsonArrayRequest(Request.Method.GET, " ",null,
+        JsonArrayRequest jsonArrayRequests =new JsonArrayRequest(Request.Method.GET,
+                "http://virualca-001-site1.dtempurl.com/api/sugerencias",
+                null,
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
                         if(response.length()!=0) {
                             for(int h=0;h<response.length();h++) {
                                 try {
-                                    listasuge.add(new Sugerencias(((JSONObject) response.get(h)).getString("nombre_sugerencia"), "" + ((JSONObject) response.get(h)).getInt("id_restaurante"),
-                                            (((JSONObject) response.get(h)).getString("imagen_sugerencia")).getBytes()));
-                                    /*Toast.makeText(context, ((JSONObject) response.get(h)).getString("nombre_sugerencia"), Toast.LENGTH_SHORT).show();*/
-/*
+                                   Sugerencias sug = new Sugerencias();
+                                   sug.setTituloSug(((JSONObject)response.get(h)).getString("titulo"));
+                                   sug.setContentSug(((JSONObject)response.get(h)).getString("contenido"));
+                                   sug.setBebidaId(((JSONObject)response.get(h)).getInt("BebidaId"));
+
+
+                                   String cadenaJson = ((JSONObject) response.get(h)).getString("Bebida");
+                                   JSONObject json = new JSONObject(cadenaJson);
+                                   String image = json.getString("imagen");
+
+                                   //Log.i("tag",image);
+
+                                   sug.setCadenaImagen(image);
+                                   listasuge.add(sug);
+
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                 }
                             }
-
-
-                            Sugerencias.llenarosugerencias(listasuge);
                             notifyDataSetChanged();
-                        }else{
-                            Toast.makeText(context, ""+ response.length(), Toast.LENGTH_SHORT).show();
+                        }else {
+                            Toast.makeText(context, "" + response.length(), Toast.LENGTH_SHORT).show();
                         }
-                        Toast.makeText(context, listasuge.size()+"", Toast.LENGTH_SHORT).show();
                     }
                 }, new Response.ErrorListener() {
             @Override
@@ -81,38 +95,31 @@ public class AdaptadorSugerencias extends RecyclerView.Adapter<AdaptadorSugerenc
             }
         }
         );
+
         que.add(jsonArrayRequests);
- */
+
     }
 
     @Override
     public void onBindViewHolder(final AdaptadorSugerencias.ViewHolder holder, final int position) {
-        //final Platos item = Platos.listaPlatos.get(position);
-        final  Sugerencias item2 = Sugerencias.listaSugerencias.get(position);
+        final  Sugerencias item2 = listasuge.get(position);
         Glide.with(holder.itemView.getContext())
-                .load(item2.getIdDrawable())
+                .load(item2.getCadenaImagen())
                 .apply(new RequestOptions().centerCrop().placeholder(R.mipmap.ic_launcher_round))
                 .into(holder.imagen);
-        holder.nombre.setText(item2.getNombre());
+        holder.titulo.setText(item2.getTituloSug());
+        holder.descripcion.setText(item2.getContentSug());
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                llenarDetalleSugerencia(v,holder,item2,position);
+
             }
         });
     }
 
-    public void llenarDetalleSugerencia(View v ,ViewHolder holder,Sugerencias item2, int position){
-
-        Intent intent = new Intent(holder.itemView.getContext(), DetalleActivity.class);
-        intent.putExtra("pos", position);
-
-        holder.itemView.getContext().startActivity(intent);
-    }
-
     @Override
     public int getItemCount() {
-        return   Sugerencias.listaSugerencias.size();
+        return  listasuge.size();
     }
 
     @Override
