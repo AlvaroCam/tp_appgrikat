@@ -55,7 +55,7 @@ public class AdaptadorSugerencias extends RecyclerView.Adapter<AdaptadorSugerenc
 
         RequestQueue que = Volley.newRequestQueue(context);
         JsonArrayRequest jsonArrayRequests =new JsonArrayRequest(Request.Method.GET,
-                "http://virualca-001-site1.dtempurl.com/api/sugerencias",
+                "http://appgrikat.gear.host/api/sugerencias",
                 null,
                 new Response.Listener<JSONArray>() {
                     @Override

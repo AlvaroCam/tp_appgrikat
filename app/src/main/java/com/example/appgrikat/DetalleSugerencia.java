@@ -47,9 +47,9 @@ public class DetalleSugerencia extends AppCompatActivity {
 
     public void obtenerBebida(int idB){
         RequestQueue que = Volley.newRequestQueue(this);
-        Toast.makeText(getApplicationContext(), ""+idB, Toast.LENGTH_LONG).show();
+        //Toast.makeText(getApplicationContext(), ""+idB, Toast.LENGTH_LONG).show();
 
-        JsonObjectRequest jsonObjectRequest =new JsonObjectRequest(Request.Method.GET, "http://virualca-001-site1.dtempurl.com/api/sugerencia/"+idB,null,
+        JsonObjectRequest jsonObjectRequest =new JsonObjectRequest(Request.Method.GET, "http://appgrikat.gear.host/api/sugerencia/"+idB,null,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
@@ -73,7 +73,7 @@ public class DetalleSugerencia extends AppCompatActivity {
                             double precio = json.getDouble("precio");
                             sug.setPrecioBeb(precio);
                             TextView precioBebida = findViewById(R.id.bebidaPrecio);
-                            precioBebida.setText("" + sug.getPrecioBeb());
+                            precioBebida.setText("S/. " + sug.getPrecioBeb());
 
                             //imagen
                             sug.setCadenaImagen(image);

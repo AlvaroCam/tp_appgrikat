@@ -38,22 +38,30 @@
         android:layout_width="match_parent"
         android:layout_height="83dp"
         android:gravity="center"
-        android:text="TextView" />
+        android:textSize="80px"
+        android:textColor="@android:color/holo_green_dark"
+        android:textStyle="bold"
+        android:text="Titulo de oferta" />
 
     <TextView
         android:id="@+id/descripcionSugerencia"
         android:layout_width="match_parent"
         android:layout_height="73dp"
         android:gravity="center"
-        android:text="DESCRIPCION DE LA SUGERENCIA" />
+        android:textSize="50px"
+        android:textColor="@android:color/holo_green_light"
+        android:textStyle="bold"
+        android:text="DESCRIPCION DE LA SUGERENCIA"/>
 
     <TextView
         android:id="@+id/bebidaPrecio"
         android:layout_width="match_parent"
         android:layout_height="78dp"
-        android:paddingRight="200px"
+        android:paddingRight="250px"
         android:gravity="right|center"
-        android:textSize="80px"
+        android:textSize="100px"
+        android:textStyle="bold"
+        android:textColor="@android:color/tertiary_text_light"
         android:text="PRECIO" />
 
 
