@@ -56,7 +56,8 @@ public class AdaptadorOfertas extends RecyclerView.Adapter<AdaptadorOfertas.View
     public  void llenarOfertas (final Context context){
         listaOfertas.clear();
         RequestQueue que = Volley.newRequestQueue(context);
-        JsonArrayRequest jsonArrayRequests =new JsonArrayRequest(Request.Method.GET, "http://virualca-001-site1.dtempurl.com/api/ofertas",null,
+        JsonArrayRequest jsonArrayRequests =new JsonArrayRequest(Request.Method.GET,
+                "http://virualca-001-site1.dtempurl.com/api/ofertas",null,
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
@@ -127,9 +128,5 @@ public class AdaptadorOfertas extends RecyclerView.Adapter<AdaptadorOfertas.View
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.ofertas_item, parent, false);
         return new ViewHolder(view);
     }
-
-
-
-
 
 }

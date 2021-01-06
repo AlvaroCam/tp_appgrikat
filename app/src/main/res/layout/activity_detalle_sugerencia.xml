@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DetalleSugerencia"
+    android:orientation="vertical"
+    android:background="@drawable/fondo2"
+    >
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@android:color/holo_green_light"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <ImageView
+        android:id="@+id/imagenBebida"
+        android:layout_width="281dp"
+        android:layout_height="310dp"
+        android:layout_gravity="center"
+        app:srcCompat="?android:attr/textSelectHandle"
+
+        />
+
+    <TextView
+        android:id="@+id/nombreSug"
+        android:layout_width="match_parent"
+        android:layout_height="83dp"
+        android:gravity="center"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/descripcionSugerencia"
+        android:layout_width="match_parent"
+        android:layout_height="73dp"
+        android:gravity="center"
+        android:text="DESCRIPCION DE LA SUGERENCIA" />
+
+    <TextView
+        android:id="@+id/bebidaPrecio"
+        android:layout_width="match_parent"
+        android:layout_height="78dp"
+        android:paddingRight="200px"
+        android:gravity="right|center"
+        android:textSize="80px"
+        android:text="PRECIO" />
+
+
+</LinearLayout>

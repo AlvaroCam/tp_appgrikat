@@ -64,24 +64,30 @@ public class AdaptadorSugerencias extends RecyclerView.Adapter<AdaptadorSugerenc
                             for(int h=0;h<response.length();h++) {
                                 try {
                                    Sugerencias sug = new Sugerencias();
+
                                    sug.setTituloSug(((JSONObject)response.get(h)).getString("titulo"));
                                    sug.setContentSug(((JSONObject)response.get(h)).getString("contenido"));
                                    sug.setBebidaId(((JSONObject)response.get(h)).getInt("BebidaId"));
+                                   sug.setSugerenciaId(((JSONObject)response.get(h)).getInt("SugerenciaId"));
 
 
                                    String cadenaJson = ((JSONObject) response.get(h)).getString("Bebida");
                                    JSONObject json = new JSONObject(cadenaJson);
-                                   String image = json.getString("imagen");
 
-                                   //Log.i("tag",image);
+                                   String image = json.getString("imagen");
+                                   double precioBebida = json.getDouble("precio");
+
+                                   //Log.i("tag",sug.getSugerenciaId()+"");
 
                                    sug.setCadenaImagen(image);
+                                   sug.setPrecioBeb(precioBebida);
                                    listasuge.add(sug);
 
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                 }
                             }
+                            Sugerencias.llenarSugerencias(listasuge);
                             notifyDataSetChanged();
                         }else {
                             Toast.makeText(context, "" + response.length(), Toast.LENGTH_SHORT).show();
@@ -112,6 +118,11 @@ public class AdaptadorSugerencias extends RecyclerView.Adapter<AdaptadorSugerenc
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Sugerencias su = new Sugerencias();
+                Intent intent = new Intent(holder.itemView.getContext(),DetalleSugerencia.class);
+                intent.putExtra("pos", position);
+                //Toast.makeText(holder.itemView.getContext(), ""+item2.getContentSug(), Toast.LENGTH_LONG).show();
+                holder.itemView.getContext().startActivity(intent);
 
             }
         });

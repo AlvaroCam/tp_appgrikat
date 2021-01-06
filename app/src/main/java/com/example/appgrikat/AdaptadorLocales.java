@@ -44,7 +44,7 @@ public class AdaptadorLocales  extends RecyclerView.Adapter<AdaptadorLocales.Vie
             super(view);
             nombre = view.findViewById(R.id.Local_title_id);
             descrip = view.findViewById(R.id.descripcion_local_id);
-            direc = view.findViewById(R.id.direccion_local_id);
+            //direc = view.findViewById(R.id.direccion_local_id);
             imagen = view.findViewById(R.id.local_img_view);
             cardView = view.findViewById(R.id.cardview_locales_id);
         }
@@ -68,7 +68,7 @@ public class AdaptadorLocales  extends RecyclerView.Adapter<AdaptadorLocales.Vie
                                     Locales loc = new Locales();
                                     loc.setNombre(((JSONObject) response.get(k)).getString("nombre"));
                                   loc.setDescripcion(((JSONObject) response.get(k)).getString("descripcion"));
-                                    loc.setDireccion(((JSONObject) response.get(k)).getString("direccion"));
+                                   // loc.setDireccion(((JSONObject) response.get(k)).getString("direccion"));
                                     loc.setImagenLo(((JSONObject) response.get(k)).getString("imagen"));
                                     listarLocales.add(loc);
 

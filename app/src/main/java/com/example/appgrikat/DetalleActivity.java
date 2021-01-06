@@ -3,6 +3,7 @@ package com.example.appgrikat;
 import android.os.Bundle;
 
 import android.util.Base64;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -36,7 +37,10 @@ public class DetalleActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         int pos = getIntent().getExtras().getInt("pos");
-        obtenerLocal(Ofertas.listaOfertas.get(pos).getInfo());
+        String of = Ofertas.listaOfertas.get(pos).getInfo();
+        //Log.i("tag",of);
+        obtenerLocal(of);
+
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);

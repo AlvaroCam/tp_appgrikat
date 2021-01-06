@@ -29,9 +29,7 @@ public class Ofertas {
     public String getNombre(){
         return  nombre;
     }
-    public String getInfo(){
-        return info;
-    }
+    public String getInfo(){ return info; }
     public String getImagen(){
         return imagen;
     }
