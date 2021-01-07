@@ -13,7 +13,7 @@
     <LinearLayout
         android:layout_width="200dp"
         android:layout_height="match_parent"
-        android:background="@drawable/fondo4"
+        android:background="@drawable/fondo6"
         android:orientation="vertical">
 
         <TextView
