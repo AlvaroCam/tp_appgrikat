@@ -39,6 +39,7 @@ public class AdaptadorSugerencias extends RecyclerView.Adapter<AdaptadorSugerenc
         // Campos respectivos de un item
         public TextView titulo;
         public TextView descripcion;
+        public TextView nroSugerencia;
         public ImageView imagen;
         public CardView cardView;
 
@@ -47,6 +48,7 @@ public class AdaptadorSugerencias extends RecyclerView.Adapter<AdaptadorSugerenc
             titulo = view.findViewById(R.id.sugerencias_title_id);
             descripcion = view.findViewById(R.id.descripcion_sugerencias_id);
             imagen = view.findViewById(R.id.sugerencias_img_view);
+            nroSugerencia = view.findViewById(R.id.nroSugerencia);
             cardView = view.findViewById(R.id.cardview_sugerencias_id);
         }
     }
@@ -69,7 +71,6 @@ public class AdaptadorSugerencias extends RecyclerView.Adapter<AdaptadorSugerenc
                                    sug.setContentSug(((JSONObject)response.get(h)).getString("contenido"));
                                    sug.setBebidaId(((JSONObject)response.get(h)).getInt("BebidaId"));
                                    sug.setSugerenciaId(((JSONObject)response.get(h)).getInt("SugerenciaId"));
-
 
                                    String cadenaJson = ((JSONObject) response.get(h)).getString("Bebida");
                                    JSONObject json = new JSONObject(cadenaJson);
@@ -113,6 +114,7 @@ public class AdaptadorSugerencias extends RecyclerView.Adapter<AdaptadorSugerenc
                 .load(item2.getCadenaImagen())
                 .apply(new RequestOptions().centerCrop().placeholder(R.mipmap.ic_launcher_round))
                 .into(holder.imagen);
+        holder.nroSugerencia.setText(item2.getSugerenciaId() + "° PUESTO");
         holder.titulo.setText(item2.getTituloSug());
         holder.descripcion.setText(item2.getContentSug());
         holder.cardView.setOnClickListener(new View.OnClickListener() {

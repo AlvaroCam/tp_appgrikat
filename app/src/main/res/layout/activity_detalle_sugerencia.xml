@@ -13,10 +13,11 @@
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        android:theme="@style/AppTheme.AppBarOverlay"
+        >
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
+            android:id="@+id/toolbarDetalleSugerencia"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@android:color/holo_green_light"
@@ -26,8 +27,8 @@
 
     <ImageView
         android:id="@+id/imagenBebida"
-        android:layout_width="281dp"
-        android:layout_height="310dp"
+        android:layout_width="255dp"
+        android:layout_height="291dp"
         android:layout_gravity="center"
         app:srcCompat="?android:attr/textSelectHandle"
 
@@ -36,33 +37,43 @@
     <TextView
         android:id="@+id/nombreSug"
         android:layout_width="match_parent"
-        android:layout_height="83dp"
+        android:layout_height="73dp"
         android:gravity="center"
-        android:textSize="80px"
-        android:textColor="@android:color/holo_green_dark"
-        android:textStyle="bold"
-        android:text="Titulo de oferta" />
+        android:text="Titulo de sugerencia"
+        android:textColor="#B89D0B"
+        android:textSize="70px"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/nombreBebida"
+        android:layout_width="match_parent"
+        android:layout_height="66dp"
+        android:gravity="center"
+        android:text="Nombre de Bebida"
+        android:textColor="#488D03"
+        android:textSize="90px"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/descripcionSugerencia"
         android:layout_width="match_parent"
-        android:layout_height="73dp"
+        android:layout_height="68dp"
         android:gravity="center"
-        android:textSize="50px"
-        android:textColor="@android:color/holo_green_light"
-        android:textStyle="bold"
-        android:text="DESCRIPCION DE LA SUGERENCIA"/>
+        android:text="Descripcion de la sugerencia"
+        android:textColor="#61B012"
+        android:textSize="60px"
+        android:textStyle="italic" />
 
     <TextView
         android:id="@+id/bebidaPrecio"
         android:layout_width="match_parent"
-        android:layout_height="78dp"
-        android:paddingRight="250px"
+        android:layout_height="73dp"
         android:gravity="right|center"
+        android:paddingRight="200px"
+        android:text="PRECIO"
+        android:textColor="#172C02"
         android:textSize="100px"
-        android:textStyle="bold"
-        android:textColor="@android:color/tertiary_text_light"
-        android:text="PRECIO" />
+        android:textStyle="bold" />
 
 
 </LinearLayout>

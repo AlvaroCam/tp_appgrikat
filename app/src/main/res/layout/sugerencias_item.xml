@@ -1,46 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-    <androidx.cardview.widget.CardView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/cardview_sugerencias_id"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:cardview="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardview_sugerencias_id"
+    android:layout_width="200dp"
+    android:layout_height="340dp"
+    android:layout_margin="5dp"
+    android:clickable="true"
+    android:foreground="?android:attr/selectableItemBackground"
+    cardview:cardCornerRadius="80px">
+
+    <LinearLayout
         android:layout_width="200dp"
-        android:layout_height="323dp"
-        android:layout_margin="5dp"
-        android:clickable="true"
-        android:foreground="?android:attr/selectableItemBackground"
-        xmlns:cardview="http://schemas.android.com/apk/res-auto"
-        cardview:cardCornerRadius="80px">
+        android:layout_height="match_parent"
+        android:background="@drawable/fondo4"
+        android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="200dp"
-            android:layout_height="321dp"
-            android:background="@drawable/fondo3"
-            android:orientation="vertical">
+        <TextView
+            android:id="@+id/nroSugerencia"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:background="#7A4209"
+            android:gravity="center"
+            android:textSize="40px"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:text="#### PUESTO"
+            />
 
-            <ImageView
-                android:id="@+id/sugerencias_img_view"
-                android:layout_width="match_parent"
-                android:layout_height="172dp"
-                android:background="@android:color/background_dark"
-                android:scaleType="centerCrop" />
+        <ImageView
+            android:id="@+id/sugerencias_img_view"
+            android:layout_width="match_parent"
+            android:layout_height="172dp"
+            android:background="@android:color/background_dark"
+            android:scaleType="centerCrop" />
 
-            <TextView
-                android:id="@+id/sugerencias_title_id"
-                android:layout_width="match_parent"
-                android:layout_height="70dp"
-                android:gravity="center"
-                android:text="Titulo de Oferta"
-                android:textColor="@android:color/background_dark"
-                android:textSize="50px" />
+        <TextView
+            android:id="@+id/sugerencias_title_id"
+            android:layout_width="match_parent"
+            android:layout_height="47dp"
+            android:gravity="center"
+            android:text="Titulo de Sugerencia"
+            android:textColor="#FFFFFF"
+            android:textSize="45px"
+            android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/descripcion_sugerencias_id"
-                android:layout_width="match_parent"
-                android:layout_height="81dp"
-                android:gravity="center"
-                android:text="Medium Text"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-                android:textColor="@android:color/holo_green_dark"
-                android:textSize="60px"/>
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
+        <TextView
+            android:id="@+id/descripcion_sugerencias_id"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:gravity="center"
+            android:text="Descripción de la sugerencia"
+            android:textColor="#F0A577"
+            android:textSize="55px"
+            android:textStyle="bold" />
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

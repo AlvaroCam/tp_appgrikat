@@ -52,7 +52,6 @@ public class InicioFragment extends Fragment implements Response.Listener<JSONOb
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         manager = new UserSessionManager(getActivity());
-
         View vista = inflater.inflate(R.layout.fragment_inicio,container,false);
         navigationView = getActivity().findViewById(R.id.nav_view);
         menu = navigationView.getMenu();

@@ -12,6 +12,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -35,7 +36,7 @@ public class DetalleSugerencia extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detalle_sugerencia);
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbarDetalleSugerencia);
         setSupportActionBar(toolbar);
 
         int pos = getIntent().getExtras().getInt("pos");
@@ -43,6 +44,11 @@ public class DetalleSugerencia extends AppCompatActivity {
 
         Log.i("tag",(Sugerencias.listaSugerencias.get(pos).getSugerenciaId() + ""));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+    @Override
+    public boolean onSupportNavigateUp() {
+        finish();
+        return true;
     }
 
     public void obtenerBebida(int idB){
@@ -67,7 +73,12 @@ public class DetalleSugerencia extends AppCompatActivity {
 
                             String cadenaJson = response.getString("Bebida");
                             JSONObject json = new JSONObject(cadenaJson);
-                            String image = json.getString("imagen");
+
+                            //nombreBebida
+                            String nombreBeb = json.getString("nombre");
+                            sug.setNombreBebida(nombreBeb);
+                            TextView nombreBebida = findViewById(R.id.nombreBebida);
+                            nombreBebida.setText(sug.getNombreBebida());
 
                             //precio
                             double precio = json.getDouble("precio");
@@ -76,6 +87,7 @@ public class DetalleSugerencia extends AppCompatActivity {
                             precioBebida.setText("S/. " + sug.getPrecioBeb());
 
                             //imagen
+                            String image = json.getString("imagen");
                             sug.setCadenaImagen(image);
                             ImageView imagen = findViewById(R.id.imagenBebida);
                             Glide.with(imagen.getContext())
