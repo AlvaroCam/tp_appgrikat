@@ -67,7 +67,7 @@ public class AdaptadorBebida extends RecyclerView.Adapter<AdaptadorBebida.ViewHo
         listarBebidas.clear();
         RequestQueue que = Volley.newRequestQueue(context);
 
-       JsonArrayRequest jsonArrayRequests =new JsonArrayRequest(Request.Method.GET, "http://virualca-001-site1.dtempurl.com/api/bebidas/"+bebidas2,null,
+       JsonArrayRequest jsonArrayRequests =new JsonArrayRequest(Request.Method.GET, "http://appgrikat.gear.host/api/bebidas/"+bebidas2,null,
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {

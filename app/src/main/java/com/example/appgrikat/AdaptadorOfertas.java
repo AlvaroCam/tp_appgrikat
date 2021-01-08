@@ -57,7 +57,7 @@ public class AdaptadorOfertas extends RecyclerView.Adapter<AdaptadorOfertas.View
         listaOfertas.clear();
         RequestQueue que = Volley.newRequestQueue(context);
         JsonArrayRequest jsonArrayRequests =new JsonArrayRequest(Request.Method.GET,
-                "http://virualca-001-site1.dtempurl.com/api/ofertas",null,
+                "http://appgrikat.gear.host/api/ofertas",null,
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {

@@ -37,30 +37,16 @@
                 tools:layout_editor_absoluteY="38dp" />
 
             <TextView
-                android:id="@+id/txtApellido"
+                android:id="@+id/txtUsername"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Apellido" />
+                android:text="Username" />
 
             <EditText
-                android:id="@+id/eTApellido"
+                android:id="@+id/eTUsername"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textPersonName" />
-
-            <TextView
-                android:id="@+id/txtDireccion"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Direccion" />
-
-            <EditText
-                android:id="@+id/eTDireccion"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textPostalAddress" />
+                android:ems="10" />
 
             <TextView
                 android:id="@+id/textView7"
@@ -89,19 +75,6 @@
                 android:inputType="phone" />
 
             <TextView
-                android:id="@+id/textView9"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Nacimiento" />
-
-            <EditText
-                android:id="@+id/eTNacimiento"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="date" />
-
-            <TextView
                 android:id="@+id/textView10"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -114,18 +87,6 @@
                 android:ems="10"
                 android:inputType="textPassword" />
 
-            <TextView
-                android:id="@+id/textView11"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Confirmar Contraseña" />
-
-            <EditText
-                android:id="@+id/eTPassword2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textPassword" />
 
             <Button
                 android:id="@+id/btnRegistrar"

@@ -35,7 +35,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class AdaptadorLocales  extends RecyclerView.Adapter<AdaptadorLocales.ViewHolder> {
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        // Campos respectivos de un item
         public TextView nombre,descrip,direc;
         public ImageView imagen;
         public CardView cardView;
@@ -44,7 +43,7 @@ public class AdaptadorLocales  extends RecyclerView.Adapter<AdaptadorLocales.Vie
             super(view);
             nombre = view.findViewById(R.id.Local_title_id);
             descrip = view.findViewById(R.id.descripcion_local_id);
-            //direc = view.findViewById(R.id.direccion_local_id);
+            direc = view.findViewById(R.id.direccion_local_id);
             imagen = view.findViewById(R.id.local_img_view);
             cardView = view.findViewById(R.id.cardview_locales_id);
         }
@@ -57,7 +56,7 @@ public class AdaptadorLocales  extends RecyclerView.Adapter<AdaptadorLocales.Vie
         listarLocales.clear();
         RequestQueue que = Volley.newRequestQueue(context);
 
-        JsonArrayRequest jsonArrayRequests =new JsonArrayRequest(Request.Method.GET, "http://virualca-001-site1.dtempurl.com/api/locales",null,
+        JsonArrayRequest jsonArrayRequests =new JsonArrayRequest(Request.Method.GET, "http://appgrikat.gear.host/api/locales",null,
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
@@ -67,9 +66,13 @@ public class AdaptadorLocales  extends RecyclerView.Adapter<AdaptadorLocales.Vie
                                 try {
                                     Locales loc = new Locales();
                                     loc.setNombre(((JSONObject) response.get(k)).getString("nombre"));
-                                  loc.setDescripcion(((JSONObject) response.get(k)).getString("descripcion"));
-                                   // loc.setDireccion(((JSONObject) response.get(k)).getString("direccion"));
+                                    loc.setDescripcion(((JSONObject) response.get(k)).getString("descripcion"));
+                                    //loc.setDireccion(((JSONObject) response.get(k)).getString("direccion"));
                                     loc.setImagenLo(((JSONObject) response.get(k)).getString("imagen"));
+
+                                    String json= ((JSONObject) response.get(k)).getString("Direccion");
+                                    String direccion= new JSONObject(json).getString("direccion");
+                                    loc.setDireccion(direccion);
                                     listarLocales.add(loc);
 
                                 } catch (JSONException e) {
@@ -93,6 +96,7 @@ public class AdaptadorLocales  extends RecyclerView.Adapter<AdaptadorLocales.Vie
         que.add(jsonArrayRequests);
     }
 
+
     @NonNull
     @Override
     public AdaptadorLocales.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -114,10 +118,10 @@ public class AdaptadorLocales  extends RecyclerView.Adapter<AdaptadorLocales.Vie
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(holder.itemView.getContext(), DetalleActivity.class);
+                /*Intent intent = new Intent(holder.itemView.getContext(), DetalleLocales.class);
                 intent.putExtra("pos", position);
                 Toast.makeText(holder.itemView.getContext(), ""+item.getNombre(), Toast.LENGTH_LONG).show();
-                holder.itemView.getContext().startActivity(intent);
+                holder.itemView.getContext().startActivity(intent);*/
             }
         });
     }

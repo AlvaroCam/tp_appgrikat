@@ -63,7 +63,7 @@ public class AdaptadorComentarios extends RecyclerView.Adapter<AdaptadorComentar
     public void listarValoraciones(final Context context, int id) {
         listaValoracion.clear();
         RequestQueue que = Volley.newRequestQueue(context);
-        JsonArrayRequest jsonArrayRequests =new JsonArrayRequest(Request.Method.GET, "http://virualca-001-site1.dtempurl.com/api/valoraciones/com/"+id,null,
+        JsonArrayRequest jsonArrayRequests =new JsonArrayRequest(Request.Method.GET, "http://appgrikat.gear.host/api/valoraciones/com/"+id,null,
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {

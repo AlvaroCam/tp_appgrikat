@@ -111,9 +111,9 @@ public class ComentarValorarActivity extends AppCompatActivity {
         RequestQueue que = Volley.newRequestQueue(this);
 
         //String endPoint = "http://virualca-001-site1.dtempurl.com/api/valoraciones/pun/" + UsuarioId + "/" + BebidaId;
-        String endPoint = "https://localhost:44382/api/valoraciones/pun/1/1";
+        String endPoint = "http://appgrikat.gear.host/api/valoraciones/pun/1/1";
 
-        Toast.makeText(getApplicationContext(), endPoint, Toast.LENGTH_LONG).show();
+       // Toast.makeText(getApplicationContext(), endPoint, Toast.LENGTH_LONG).show();
 
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest
                 (Request.Method.GET, endPoint, null, new Response.Listener<JSONArray>() {
@@ -168,7 +168,7 @@ public class ComentarValorarActivity extends AppCompatActivity {
 
 
         //JsonObjectRequest jsonObjectRequest =new JsonObjectRequest(Request.Method.GET, "http://virualca-001-site1.dtempurl.com/api/valoraciones/com"+manager.getSesion().getUsuarioId()+"/"+ Bebidas.buscarbebida.get(pos).getId_bebida()+"/"+4+"/"+comentario.replaceAll(" ", "%20")
-        JsonObjectRequest jsonObjectRequest =new JsonObjectRequest(Request.Method.POST, "http://virualca-001-site1.dtempurl.com/api/valoraciones/com",valoracion,
+        JsonObjectRequest jsonObjectRequest =new JsonObjectRequest(Request.Method.POST, "http://appgrikat.gear.host/api/valoraciones/com",valoracion,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
@@ -192,7 +192,7 @@ public class ComentarValorarActivity extends AppCompatActivity {
 
         RequestQueue que = Volley.newRequestQueue(context);
 
-        String endPoint = "http://virualca-001-site1.dtempurl.com/api/bebida/" + id;
+        String endPoint = "http://appgrikat.gear.host/api/bebida/" + id;
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
                 (Request.Method.GET, endPoint, null, new Response.Listener<JSONObject>() {
 
