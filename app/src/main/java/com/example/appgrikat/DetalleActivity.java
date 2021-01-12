@@ -33,24 +33,13 @@ public class DetalleActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detalle);
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbarDetalleOferta);
         setSupportActionBar(toolbar);
 
         int pos = getIntent().getExtras().getInt("pos");
-        String of = Ofertas.listaOfertas.get(pos).getInfo();
-        //Log.i("tag",of);
-        obtenerLocal(of);
-
+        obtenerLocal(Ofertas.listaOfertas.get(pos).getOfertaId());
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
     }
 
     @Override
@@ -59,33 +48,47 @@ public class DetalleActivity extends AppCompatActivity {
         return true;
     }
 
-    public  void obtenerLocal (String idR){
+    public  void obtenerLocal (int idR) {
         RequestQueue que = Volley.newRequestQueue(this);
-        Toast.makeText(getApplicationContext(), ""+idR, Toast.LENGTH_LONG).show();
-        JsonObjectRequest jsonObjectRequest =new JsonObjectRequest(Request.Method.GET, "http://virualca-001-site1.dtempurl.com/api/oferta/"+idR,null,
+        //Toast.makeText(getApplicationContext(), "" + idR, Toast.LENGTH_LONG).show();
+
+        JsonObjectRequest jsonObjectRequest =new JsonObjectRequest(Request.Method.GET, "http://appgrikat.gear.host/api/oferta/"+idR,null,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
-                            Locales loc = new Locales();
+                            Ofertas of = new Ofertas();
+                            of.setOfertaId(response.getInt("OfertaId"));
+                            of.setNombre(response.getString("nombre"));
+                            setTitle("OFERTA #" + of.getOfertaId() +": "+of.getNombre());
 
-                            loc.setDescripcion(response.getString("descripcion"));
-                            loc.setDireccion(response.getString("direccion"));
-                            loc.setNombre(response.getString("nombre"));
-                          //  loc.setImage(Base64.decode(response.getString("imagen_oferta"),Base64.DEFAULT));
-                            loc.setImagenLo(response.getString("imagen"));
-                            setTitle(loc.getNombre());
-                            TextView nombre = findViewById(R.id.txttitleOf);
-                            nombre.setText(loc.getNombre());
-                            TextView desc = findViewById(R.id.txtDescOf);
-                            desc.setText(loc.getDescripcion());
-                            TextView dir = findViewById(R.id.txtDireccion);
-                            dir.setText(loc.getDireccion());
-                            ImageView iamgen = findViewById(R.id.idImagen);
-                            Glide.with(iamgen.getContext())
-                                    .load(loc.getImagenLo())
+                            of.setImagen(response.getString("imagen"));
+                            of.setInfo(response.getString("descripcion"));
+                            of.setFechaIn(response.getString("fechaI"));
+                            of.setFechaFin(response.getString("fechaF"));
+
+                            TextView desc = findViewById(R.id.descripcionOferta);
+                            desc.setText(of.getInfo());
+                            TextView fechaDisp = findViewById(R.id.DisponibilidadFecha);
+                            String fechaIDia = of.getFechaIn().substring(8,10);
+                            String fechaIMes = of.getFechaIn().substring(5,7);
+                            String fechaIAño = of.getFechaIn().substring(0,4);
+                            String fechaFDia = of.getFechaFin().substring(8,10);
+                            String fechaFMes = of.getFechaFin().substring(5,7);
+                            String fechaFAño = of.getFechaFin().substring(0,4);
+                            fechaDisp.setText("Valido desde el " + fechaIDia+"/"+fechaIMes+"/"+fechaIAño + " hasta el " + fechaFDia+"/"+fechaFMes+"/"+fechaFAño);
+                            ImageView imagen = findViewById(R.id.imagenOferta);
+                            Glide.with(imagen.getContext())
+                                    .load(of.getImagen())
                                     .apply(new RequestOptions().centerCrop().placeholder(R.mipmap.ic_launcher_round))
-                                    .into(iamgen);
+                                    .into(imagen);
+
+                            String cadenaJson = response.getString("Local");
+                            JSONObject json = new JSONObject(cadenaJson);
+
+                            of.setNombreLocal(json.getString("nombre"));
+                            TextView nombLoc = findViewById(R.id.DisponibilidadLocal);
+                            nombLoc.setText("¡Disponible en " + of.getNombreLocal()+"!");
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }

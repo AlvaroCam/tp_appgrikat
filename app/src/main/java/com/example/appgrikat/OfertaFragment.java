@@ -20,7 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class OfertaFragment extends Fragment {
     private RecyclerView recyclerOfertas;
-    private LinearLayoutManager layoutManager;
+    private GridLayoutManager layoutManager;
     private AdaptadorOfertas adaptador;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -32,7 +32,7 @@ public class OfertaFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_oferta,container,false);
 
         recyclerOfertas = view.findViewById(R.id.idreciclador_ofertas);
-        layoutManager = new LinearLayoutManager(getActivity());
+        layoutManager = new GridLayoutManager(getActivity(),1);
         recyclerOfertas.setLayoutManager(layoutManager);
 
 

@@ -4,63 +4,117 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-
 public class Ofertas {
+    private int ofertaId;
     private String nombre;
     private String info;
-    private double precio;
     private String imagen;
-//private int idimagen;
-// private  int imgOfertaDetalle;
+    private String fechaIn;
+    private String fechaFin;
+    private double descuento;
+    private int localId;
+    private String nombreLocal;
 
-    public Ofertas(){
-
-    }
-
-    public Ofertas(String nombre, String info, double precio,String imagen){
-        this.nombre=nombre;
-        this.info=info;
-        this.precio=precio;
-        this.imagen=imagen;
-        //this.imgOfertaDetalle=imgOfertaDetalle;
+    public Ofertas() {
 
     }
 
-    public String getNombre(){
-        return  nombre;
+    public Ofertas(int ofertaId,
+                   String nombre,
+                   String info,
+                   String imagen,
+                   String fechaIn,
+                   String fechaFin,
+                   double descuento,
+                   int localId,
+                   String nombreLocal) {
+        this.ofertaId = ofertaId;
+        this.nombre = nombre;
+        this.info = info;
+        this.imagen = imagen;
+        this.fechaIn = fechaIn;
+        this.fechaFin = fechaFin;
+        this.descuento = descuento;
+        this.localId = localId;
+        this.nombreLocal = nombreLocal;
     }
-    public String getInfo(){ return info; }
-    public String getImagen(){
+
+    public int getOfertaId() {
+        return ofertaId;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getInfo() {
+        return info;
+    }
+
+    public String getImagen() {
         return imagen;
     }
-    public double getPrecio(){
-        return precio;
-    }
-    //  public int getIdimagen(){return  idimagen;}
-    public static  List<Ofertas> listaOfertas= new ArrayList<>();
-    static {
-        /*
-        listaOfertas.add(new Ofertas("oferta1"," 1",R.drawable.imagenoferta1));
-        listaOfertas.add(new Ofertas("oferta2","2 ",R.drawable.imagenoferta2));
-        listaOfertas.add(new Ofertas("oferta3","3 ",R.drawable.imagenoferta3));
-        listaOfertas.add(new Ofertas("oferta4","4 ",R.drawable.imagenoferta4));
-        listaOfertas.add(new Ofertas("oferta5","5 ",R.drawable.imagenoferta5));
-        listaOfertas.add(new Ofertas("oferta6","6 ",R.drawable.imagenoferta6));
-        listaOfertas.add(new Ofertas("oferta7","7 ",R.drawable.imagenoferta7));
-        listaOfertas.add(new Ofertas("oferta8","8 ",R.drawable.imagenoferta8));
-        listaOfertas.add(new Ofertas("oferta9","9 ",R.drawable.imagenoferta9));
-        */
-    }
-    //public byte[]  getIdDrawable(){return imagen;}
-    public void setNombre(String nombre){ this.nombre=  nombre;}
-    public void setInfo(String info){this.info=  info;}
-    public void setPrecio(double precio){this.precio=precio;}
-    // public void setIdimagen(int idimagen){this.idimagen=  idimagen;}
-    public void setImagen(String  imagen){this.imagen=  imagen;}
 
-    public static  void  llenarOfertas(List<Ofertas> ofertas){
-        listaOfertas=ofertas;
+    public String getFechaIn() {
+        return fechaIn;
+    }
 
+    public String getFechaFin() {
+        return fechaFin;
+    }
+
+    public double getDescuento() {
+        return descuento;
+    }
+
+    public int getLocalId() {
+        return localId;
+    }
+
+    public String getNombreLocal() {
+        return nombreLocal;
+    }
+
+    public static List<Ofertas> listaOfertas = new ArrayList<>();
+
+    public void setOfertaId(int ofertaId) {
+        this.ofertaId = ofertaId;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setInfo(String info) {
+        this.info = info;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
+
+    public void setFechaIn(String fechaIn) {
+        this.fechaIn = fechaIn;
+    }
+
+    public void setFechaFin(String fechaFin) {
+        this.fechaFin = fechaFin;
+    }
+
+    public void setDescuento(double descuento) {
+        this.descuento = descuento;
+    }
+
+    public void setLocalId(int localId) {
+        this.localId = localId;
+    }
+
+    public void setNombreLocal(String nombreLocal) {
+        this.nombreLocal = nombreLocal;
+    }
+
+    public static void llenarOfertas(List<Ofertas> ofertas) {
+        listaOfertas = ofertas;
     }
 
 }

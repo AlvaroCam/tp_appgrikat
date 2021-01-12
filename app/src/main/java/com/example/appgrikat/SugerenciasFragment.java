@@ -21,13 +21,11 @@ public class SugerenciasFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_sugerencias,container,false);
-
         recyclerSugerencias = view.findViewById(R.id.idreciclador_sugerencias);
         layoutManager = new GridLayoutManager(getActivity(),2);
         recyclerSugerencias.setLayoutManager(layoutManager);

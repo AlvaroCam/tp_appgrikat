@@ -22,11 +22,10 @@
             android:layout_height="30dp"
             android:background="#7A4209"
             android:gravity="center"
-            android:textSize="40px"
-            android:textStyle="bold"
-            android:textColor="#FFFFFF"
             android:text="#### PUESTO"
-            />
+            android:textColor="#FFFFFF"
+            android:textSize="40px"
+            android:textStyle="bold" />
 
         <ImageView
             android:id="@+id/sugerencias_img_view"

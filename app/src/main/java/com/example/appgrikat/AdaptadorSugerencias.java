@@ -20,6 +20,7 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.example.appgrikat.MainActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -27,14 +28,12 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.*;
 
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class AdaptadorSugerencias extends RecyclerView.Adapter<AdaptadorSugerencias.ViewHolder>{
-    List<Sugerencias> listasuge =new ArrayList<>();
-
+public class AdaptadorSugerencias extends RecyclerView.Adapter<AdaptadorSugerencias.ViewHolder> {
+    List<Sugerencias> listasuge = new ArrayList<>();
     public static class ViewHolder extends RecyclerView.ViewHolder {
         // Campos respectivos de un item
         public TextView titulo;
@@ -45,6 +44,7 @@ public class AdaptadorSugerencias extends RecyclerView.Adapter<AdaptadorSugerenc
 
         public ViewHolder(View view) {
             super(view);
+
             titulo = view.findViewById(R.id.sugerencias_title_id);
             descripcion = view.findViewById(R.id.descripcion_sugerencias_id);
             imagen = view.findViewById(R.id.sugerencias_img_view);
@@ -53,36 +53,36 @@ public class AdaptadorSugerencias extends RecyclerView.Adapter<AdaptadorSugerenc
         }
     }
 
-    public  void listarSugerencia (final Context context) {
+    public void listarSugerencia(final Context context) {
 
         RequestQueue que = Volley.newRequestQueue(context);
-        JsonArrayRequest jsonArrayRequests =new JsonArrayRequest(Request.Method.GET,
+        JsonArrayRequest jsonArrayRequests = new JsonArrayRequest(Request.Method.GET,
                 "http://appgrikat.gear.host/api/sugerencias",
                 null,
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
-                        if(response.length()!=0) {
-                            for(int h=0;h<response.length();h++) {
+                        if (response.length() != 0) {
+                            for (int h = 0; h < response.length(); h++) {
                                 try {
-                                   Sugerencias sug = new Sugerencias();
+                                    Sugerencias sug = new Sugerencias();
 
-                                   sug.setTituloSug(((JSONObject)response.get(h)).getString("titulo"));
-                                   sug.setContentSug(((JSONObject)response.get(h)).getString("contenido"));
-                                   sug.setBebidaId(((JSONObject)response.get(h)).getInt("BebidaId"));
-                                   sug.setSugerenciaId(((JSONObject)response.get(h)).getInt("SugerenciaId"));
+                                    sug.setTituloSug(((JSONObject) response.get(h)).getString("titulo"));
+                                    sug.setContentSug(((JSONObject) response.get(h)).getString("contenido"));
+                                    sug.setBebidaId(((JSONObject) response.get(h)).getInt("BebidaId"));
+                                    sug.setSugerenciaId(((JSONObject) response.get(h)).getInt("SugerenciaId"));
 
-                                   String cadenaJson = ((JSONObject) response.get(h)).getString("Bebida");
-                                   JSONObject json = new JSONObject(cadenaJson);
+                                    String cadenaJson = ((JSONObject) response.get(h)).getString("Bebida");
+                                    JSONObject json = new JSONObject(cadenaJson);
 
-                                   String image = json.getString("imagen");
-                                   double precioBebida = json.getDouble("precio");
+                                    String image = json.getString("imagen");
+                                    double precioBebida = json.getDouble("precio");
 
-                                   //Log.i("tag",sug.getSugerenciaId()+"");
+                                    //Log.i("tag",sug.getSugerenciaId()+"");
 
-                                   sug.setCadenaImagen(image);
-                                   sug.setPrecioBeb(precioBebida);
-                                   listasuge.add(sug);
+                                    sug.setCadenaImagen(image);
+                                    sug.setPrecioBeb(precioBebida);
+                                    listasuge.add(sug);
 
                                 } catch (JSONException e) {
                                     e.printStackTrace();
@@ -90,7 +90,7 @@ public class AdaptadorSugerencias extends RecyclerView.Adapter<AdaptadorSugerenc
                             }
                             Sugerencias.llenarSugerencias(listasuge);
                             notifyDataSetChanged();
-                        }else {
+                        } else {
                             Toast.makeText(context, "" + response.length(), Toast.LENGTH_SHORT).show();
                         }
                     }
@@ -98,7 +98,7 @@ public class AdaptadorSugerencias extends RecyclerView.Adapter<AdaptadorSugerenc
             @Override
             public void onErrorResponse(VolleyError error) {
 
-                Toast.makeText(context,error.toString(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, error.toString(), Toast.LENGTH_SHORT).show();
             }
         }
         );
@@ -109,7 +109,8 @@ public class AdaptadorSugerencias extends RecyclerView.Adapter<AdaptadorSugerenc
 
     @Override
     public void onBindViewHolder(final AdaptadorSugerencias.ViewHolder holder, final int position) {
-        final  Sugerencias item2 = listasuge.get(position);
+
+        final Sugerencias item2 = listasuge.get(position);
         Glide.with(holder.itemView.getContext())
                 .load(item2.getCadenaImagen())
                 .apply(new RequestOptions().centerCrop().placeholder(R.mipmap.ic_launcher_round))
@@ -121,7 +122,7 @@ public class AdaptadorSugerencias extends RecyclerView.Adapter<AdaptadorSugerenc
             @Override
             public void onClick(View v) {
                 Sugerencias su = new Sugerencias();
-                Intent intent = new Intent(holder.itemView.getContext(),DetalleSugerencia.class);
+                Intent intent = new Intent(holder.itemView.getContext(), DetalleSugerencia.class);
                 intent.putExtra("pos", position);
                 //Toast.makeText(holder.itemView.getContext(), ""+item2.getContentSug(), Toast.LENGTH_LONG).show();
                 holder.itemView.getContext().startActivity(intent);
@@ -132,7 +133,7 @@ public class AdaptadorSugerencias extends RecyclerView.Adapter<AdaptadorSugerenc
 
     @Override
     public int getItemCount() {
-        return  listasuge.size();
+        return listasuge.size();
     }
 
     @Override

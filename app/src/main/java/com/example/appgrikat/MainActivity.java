@@ -11,6 +11,7 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -31,11 +32,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private UserSessionManager manager;
     private NavigationView navigationView;
 
+    public void ponerTitulo(String title) {
+        setTitle(title);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        setTitle("APPGRIKAT");
+        ponerTitulo("APPGRIKAT");
 
         manager = new UserSessionManager(this);
         navigationView = findViewById(R.id.nav_view);
@@ -49,7 +54,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         fragmentTransaction.add(R.id.fragment_container,new InicioFragment());
         fragmentTransaction.commit();
 */
-
 
 
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -160,9 +164,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public void onBackPressed() {
-        if(drawer.isDrawerOpen(GravityCompat.START)){
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
-        } else{
+        } else {
             super.onBackPressed();
         }
 
@@ -170,7 +174,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.drawer_menu,menu);
+        getMenuInflater().inflate(R.menu.drawer_menu, menu);
         return true;
     }
 

@@ -38,23 +38,28 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class AdaptadorOfertas extends RecyclerView.Adapter<AdaptadorOfertas.ViewHolder>{
     public  List<Ofertas> listaOfertas= new ArrayList<>();
-    DireccionWeb direccion= new DireccionWeb();
+
+    //DireccionWeb direccion= new DireccionWeb();
     public static class ViewHolder extends RecyclerView.ViewHolder {
         // Campos respectivos de un item
         public TextView nombre;
         public ImageView imagen;
+        public TextView nombreLocal;
+        public TextView duracion;
         public CardView cardView;
 
         public ViewHolder(View view) {
             super(view);
             nombre = view.findViewById(R.id.ofertas_title_id);
             imagen = view.findViewById(R.id.ofertas_img_view);
+            nombreLocal = view.findViewById(R.id.nombre_local);
+            duracion = view.findViewById(R.id.duracion);
             cardView = view.findViewById(R.id.cardview_ofertas_id);
         }
     }
 
     public  void llenarOfertas (final Context context){
-        listaOfertas.clear();
+        //listaOfertas.clear();
         RequestQueue que = Volley.newRequestQueue(context);
         JsonArrayRequest jsonArrayRequests =new JsonArrayRequest(Request.Method.GET,
                 "http://appgrikat.gear.host/api/ofertas",null,
@@ -65,9 +70,17 @@ public class AdaptadorOfertas extends RecyclerView.Adapter<AdaptadorOfertas.View
                             for ( int u=0; u<response.length();u++) {
                                 try {
                                     Ofertas ofertas = new Ofertas();
+                                    ofertas.setOfertaId(((JSONObject) response.get(u)).getInt("OfertaId"));
                                     ofertas.setNombre(((JSONObject) response.get(u)).getString("nombre"));
-                                    //ofertas.setPrecio(((JSONObject) response.get(u)).getDouble("precio"));
-                                   ofertas.setImagen(((JSONObject) response.get(u)).getString("imagen"));
+                                    ofertas.setImagen(((JSONObject) response.get(u)).getString("imagen"));
+                                    ofertas.setFechaIn(((JSONObject) response.get(u)).getString("fechaI"));
+                                    ofertas.setFechaFin(((JSONObject) response.get(u)).getString("fechaF"));
+
+                                    String cadenaJson = ((JSONObject) response.get(u)).getString("Local");
+                                    JSONObject json = new JSONObject(cadenaJson);
+
+                                    ofertas.setNombreLocal(json.getString("nombre"));
+
                                     listaOfertas.add(ofertas);
 
 
@@ -98,20 +111,26 @@ public class AdaptadorOfertas extends RecyclerView.Adapter<AdaptadorOfertas.View
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
-        //Ofertas item = Ofertas.listaOfertas.get(position);
         final Ofertas item = listaOfertas.get(position);
         //Bitmap bmp = BitmapFactory.decodeByteArray(item.getIdDrawable(), 0, item.getIdDrawable().length);
-
         Glide.with(holder.itemView.getContext()).load(item.getImagen())
                 .apply(new RequestOptions().centerCrop().placeholder(R.mipmap.ic_launcher_round))
                 .into(holder.imagen);
         holder.nombre.setText(item.getNombre());
+        holder.nombreLocal.setText("En " + item.getNombreLocal());
+        String fechaIDia = item.getFechaIn().substring(8,10);
+        String fechaIMes = item.getFechaIn().substring(5,7);
+        String fechaIAño = item.getFechaIn().substring(0,4);
+        String fechaFDia = item.getFechaFin().substring(8,10);
+        String fechaFMes = item.getFechaFin().substring(5,7);
+        String fechaFAño = item.getFechaFin().substring(0,4);
+        holder.duracion.setText("Valido desde el " + fechaIDia+"/"+fechaIMes+"/"+fechaIAño + " hasta el " + fechaFDia+"/"+fechaFMes+"/"+fechaFAño);
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(holder.itemView.getContext(), DetalleActivity.class);
                 intent.putExtra("pos", position);
-                Toast.makeText(holder.itemView.getContext(), ""+item.getInfo(), Toast.LENGTH_LONG).show();
+                //Toast.makeText(holder.itemView.getContext(), ""+item.getInfo(), Toast.LENGTH_LONG).show();
                 holder.itemView.getContext().startActivity(intent);
             }
         });

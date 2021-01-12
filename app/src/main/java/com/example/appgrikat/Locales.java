@@ -22,12 +22,6 @@ public class Locales{
 
     }
     public static final List<Locales> listaLocales= new ArrayList<>();
-   /* static {
-        listaLocales.add(new Locales("Katmandu 1", "el original","Av La Marina 233", R.drawable.imagenrestaurante1));
-        listaLocales.add(new Locales("Katmandu 2", "sucursal","Av los constructores 455", R.drawable.imagenrestaurante2));
-        listaLocales.add(new Locales("Katmandu 3", "sede 3", "av las gaviotas 845",R.drawable.imagenrestaurante3));
-    }
-    */
 
     public String getNombre() {
         return nombre;
