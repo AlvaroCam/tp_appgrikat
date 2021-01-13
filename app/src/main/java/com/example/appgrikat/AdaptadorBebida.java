@@ -114,7 +114,7 @@ public class AdaptadorBebida extends RecyclerView.Adapter<AdaptadorBebida.ViewHo
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
         holder.lblbebida.setText(Bebidas.buscarbebida.get(position).getNombre());
-        holder.lblprecio.setText((int) Bebidas.buscarbebida.get(position).getPrecio()+"");
+        holder.lblprecio.setText("S/. "+Bebidas.buscarbebida.get(position).getPrecio()+"0");
         holder.lbldescripcion.setText(Bebidas.buscarbebida.get(position).getDescripcion());
         final Bebidas item = Bebidas.buscarbebida.get(position);
 //        Bitmap bmp = BitmapFactory.decodeByteArray(item.getIdDrawable(), 0, item.getIdDrawable().length);

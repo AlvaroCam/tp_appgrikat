@@ -48,10 +48,6 @@ public class ComentarValorarActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_comentar_valorar);
 
-
-       // Toolbar toolbar = findViewById(R.id.toolbar);
-        //setSupportActionBar(toolbar);
-
         final int pos = getIntent().getExtras().getInt("pos");
 
         manager = new UserSessionManager(this);
@@ -60,8 +56,6 @@ public class ComentarValorarActivity extends AppCompatActivity {
 
         setTitle(Bebidas.buscarbebida.get(pos).getNombre());
 
-       // TextView nombreu = findViewById(R.id.lblNombre);
-        //nombreu.setText(manager.getSesion().getNombre());
         TextView descripcion = findViewById(R.id.txtDescripcion);
         descripcion.setText(Bebidas.buscarbebida.get(pos).getDescripcion());
         ImageView imagen = findViewById(R.id.idDrawable);

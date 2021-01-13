@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.appgrikat">
 
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
@@ -20,9 +21,14 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".DetalleOfertasPorLocal"
+            android:label="@string/title_activity_detalle_ofertas_por_local"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+
+        <activity
             android:name=".DetalleSugerencia"
             android:label="@string/title_activity_detalle_sugerencia"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".MainActivity"
             android:largeHeap="true"
@@ -40,7 +46,7 @@
         <activity
             android:name=".ComentarValorarActivity"
             android:label="@string/title_activity_comentar_valorar"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

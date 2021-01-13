@@ -4,24 +4,35 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-
-public class Locales{
+public class Locales {
+    private int localId;
     private String nombre;
     private String descripcion;
     private String direccion;
     private String imagenLo;
+    private int ofertaId;
 
-    public Locales(){
+    public Locales() {
+
+    }
+
+    public Locales(int localId, String nombre, String descripcion, String direccion, String imagenLo, int ofertaId) {
+        this.localId = localId;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.direccion = direccion;
+        this.imagenLo = imagenLo;
+        this.ofertaId = ofertaId;
 
     }
 
-    public Locales(String nombre, String descripcion, String direccion, String imagenLo){
-        this.nombre=nombre;
-        this.descripcion=descripcion;
-        this.imagenLo=imagenLo;
+    public static  List<Locales> listaLocales = new ArrayList<>();
 
+    public int getLocalId() {
+        return localId;
     }
-    public static final List<Locales> listaLocales= new ArrayList<>();
+
+    public void setLocalId(int localId) { this.localId = localId; }
 
     public String getNombre() {
         return nombre;
@@ -55,9 +66,14 @@ public class Locales{
         this.imagenLo = imagenLo;
     }
 
-    public static List<Locales> getListaLocales() {
-        return listaLocales;
+    public int getOfertaId(){return ofertaId;}
+
+    public void setOfertaId(int ofertaId){this.ofertaId = ofertaId;}
+
+    public static void llenarLocales(List<Locales> locales) {
+        listaLocales = locales;
     }
+
 }
 
 

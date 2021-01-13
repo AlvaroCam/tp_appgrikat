@@ -18,19 +18,20 @@
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:padding="4dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:background="@drawable/fondo9">
 
         <ImageView
             android:id="@+id/idImagen"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginRight="10dp"
+            android:layout_width="110dp"
+            android:layout_height="130dp"
             android:layout_marginTop="15dp"
+            android:layout_marginRight="10dp"
             android:src="@mipmap/ic_launcher" />
 
         <LinearLayout
-            android:layout_width="118dp"
-            android:layout_height="wrap_content"
+            android:layout_width="263dp"
+            android:layout_height="146dp"
             android:orientation="vertical">
 
             <TextView
@@ -39,23 +40,27 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:text="Bebida:"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
 
 
             <TextView
                 android:id="@+id/lblNombreBebida"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="Nombre" />
+                android:text="Nombre"
+                android:textColor="#7D1928"
+                android:textSize="50px"
+                android:textStyle="bold" />
 
 
             <TextView
                 android:id="@+id/lblPrecioBebida"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Precio" />
-
+                android:text="Precio"
+                android:textSize="70px"
+                android:textStyle="bold"/>
 
 
             <TextView

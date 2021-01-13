@@ -19,6 +19,14 @@ public class Ofertas {
 
     }
 
+    public Ofertas(String nombre, String fechaIn, String fechaFin, String imagen){
+
+        this.nombre=nombre;
+        this.fechaIn=fechaIn;
+        this.fechaFin=fechaFin;
+        this.imagen= imagen;
+
+    }
     public Ofertas(int ofertaId,
                    String nombre,
                    String info,

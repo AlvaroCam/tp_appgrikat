@@ -36,10 +36,9 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 
-public class AdaptadorOfertas extends RecyclerView.Adapter<AdaptadorOfertas.ViewHolder>{
-    public  List<Ofertas> listaOfertas= new ArrayList<>();
+public class AdaptadorOfertas extends RecyclerView.Adapter<AdaptadorOfertas.ViewHolder> {
+    public List<Ofertas> listaOfertas = new ArrayList<>();
 
-    //DireccionWeb direccion= new DireccionWeb();
     public static class ViewHolder extends RecyclerView.ViewHolder {
         // Campos respectivos de un item
         public TextView nombre;
@@ -58,16 +57,17 @@ public class AdaptadorOfertas extends RecyclerView.Adapter<AdaptadorOfertas.View
         }
     }
 
-    public  void llenarOfertas (final Context context){
-        //listaOfertas.clear();
+    public void llenarOfertas(final Context context) {
+
+        listaOfertas.clear();
         RequestQueue que = Volley.newRequestQueue(context);
-        JsonArrayRequest jsonArrayRequests =new JsonArrayRequest(Request.Method.GET,
-                "http://appgrikat.gear.host/api/ofertas",null,
+        JsonArrayRequest jsonArrayRequests = new JsonArrayRequest(Request.Method.GET,
+                "http://appgrikat.gear.host/api/ofertas", null,
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
-                        if(response.length()!=0) {
-                            for ( int u=0; u<response.length();u++) {
+                        if (response.length() != 0) {
+                            for (int u = 0; u < response.length(); u++) {
                                 try {
                                     Ofertas ofertas = new Ofertas();
                                     ofertas.setOfertaId(((JSONObject) response.get(u)).getInt("OfertaId"));
@@ -83,30 +83,28 @@ public class AdaptadorOfertas extends RecyclerView.Adapter<AdaptadorOfertas.View
 
                                     listaOfertas.add(ofertas);
 
-
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                 }
                             }
                             Ofertas.llenarOfertas(listaOfertas);
                             notifyDataSetChanged();
-                        }else{
-                            Toast.makeText(context, ""+ response.length(), Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(context, "" + response.length(), Toast.LENGTH_SHORT).show();
                         }
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.i("TAG",error.toString());
+                Log.i("TAG", error.toString());
 
-                Toast.makeText(context,error.toString(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, error.toString(), Toast.LENGTH_SHORT).show();
             }
         }
         );
         //  jsonArrayRequests.setRetryPolicy(new DefaultRetryPolicy(20000,DefaultRetryPolicy.DEFAULT_MAX_RETRIES,DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         que.add(jsonArrayRequests);
     }
-
 
 
     @Override
@@ -118,13 +116,13 @@ public class AdaptadorOfertas extends RecyclerView.Adapter<AdaptadorOfertas.View
                 .into(holder.imagen);
         holder.nombre.setText(item.getNombre());
         holder.nombreLocal.setText("En " + item.getNombreLocal());
-        String fechaIDia = item.getFechaIn().substring(8,10);
-        String fechaIMes = item.getFechaIn().substring(5,7);
-        String fechaIAño = item.getFechaIn().substring(0,4);
-        String fechaFDia = item.getFechaFin().substring(8,10);
-        String fechaFMes = item.getFechaFin().substring(5,7);
-        String fechaFAño = item.getFechaFin().substring(0,4);
-        holder.duracion.setText("Valido desde el " + fechaIDia+"/"+fechaIMes+"/"+fechaIAño + " hasta el " + fechaFDia+"/"+fechaFMes+"/"+fechaFAño);
+        String fechaIDia = item.getFechaIn().substring(8, 10);
+        String fechaIMes = item.getFechaIn().substring(5, 7);
+        String fechaIAño = item.getFechaIn().substring(0, 4);
+        String fechaFDia = item.getFechaFin().substring(8, 10);
+        String fechaFMes = item.getFechaFin().substring(5, 7);
+        String fechaFAño = item.getFechaFin().substring(0, 4);
+        holder.duracion.setText("Valido desde el " + fechaIDia + "/" + fechaIMes + "/" + fechaIAño + " hasta el " + fechaFDia + "/" + fechaFMes + "/" + fechaFAño);
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

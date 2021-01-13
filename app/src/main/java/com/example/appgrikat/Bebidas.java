@@ -27,8 +27,6 @@ public class Bebidas {
 
     static  List<Bebidas> buscarbebida= new ArrayList<Bebidas>();
 
-
-
     public  static  void  setBuscarbebida( List<Bebidas> bebidas ){
         buscarbebida=bebidas;
     }

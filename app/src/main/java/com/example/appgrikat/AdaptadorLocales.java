@@ -64,20 +64,22 @@ public class AdaptadorLocales  extends RecyclerView.Adapter<AdaptadorLocales.Vie
                             for(int k=0;k<response.length();k++) {
                                 try {
                                     Locales loc = new Locales();
+                                    loc.setLocalId(((JSONObject) response.get(k)).getInt("LocalId"));
                                     loc.setNombre(((JSONObject) response.get(k)).getString("nombre"));
                                     loc.setDescripcion(((JSONObject) response.get(k)).getString("descripcion"));
-                                    //loc.setDireccion(((JSONObject) response.get(k)).getString("direccion"));
                                     loc.setImagenLo(((JSONObject) response.get(k)).getString("imagen"));
 
                                     String json= ((JSONObject) response.get(k)).getString("Direccion");
                                     String direccion= new JSONObject(json).getString("direccion");
                                     loc.setDireccion(direccion);
+
                                     listarLocales.add(loc);
 
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                 }
                             }
+                            Locales.llenarLocales(listarLocales);
                             notifyDataSetChanged();
                         }else{
                             Toast.makeText(context, ""+ response.length(), Toast.LENGTH_SHORT).show();
@@ -117,10 +119,10 @@ public class AdaptadorLocales  extends RecyclerView.Adapter<AdaptadorLocales.Vie
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*Intent intent = new Intent(holder.itemView.getContext(), DetalleLocales.class);
+                Intent intent = new Intent(holder.itemView.getContext(), DetalleOfertasPorLocal.class);
                 intent.putExtra("pos", position);
-                Toast.makeText(holder.itemView.getContext(), ""+item.getNombre(), Toast.LENGTH_LONG).show();
-                holder.itemView.getContext().startActivity(intent);*/
+                //Toast.makeText(holder.itemView.getContext(), ""+item.getNombre(), Toast.LENGTH_LONG).show();
+                holder.itemView.getContext().startActivity(intent);
             }
         });
     }
