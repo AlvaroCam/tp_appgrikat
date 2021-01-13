@@ -37,10 +37,13 @@
                 android:layout_height="wrap_content"
                 android:saveEnabled="true"
                 android:numStars="5"
-                android:isIndicator="true"/>
+                android:isIndicator="true"
+                android:progressDrawable="@drawable/ic_copa_llena"
+                android:layout_marginTop="52px"
+                android:layout_marginBottom="40px"/>
             <ImageView
                 android:layout_width="125dp"
-                android:layout_height="170dp"
+                android:layout_height="220dp"
                 android:background="#2d2d2d"
                 android:id="@+id/idDrawable"
                 android:scaleType="centerCrop"/>
@@ -82,7 +85,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:saveEnabled="true"
-                        android:numStars="5"/>
+                        android:numStars="5"
+                        android:progressDrawable="@drawable/ic_copa_llena"
+                        android:layout_marginTop="52px"
+                        android:layout_marginBottom="20px"/>
                 </LinearLayout>
 
                 <ImageButton
